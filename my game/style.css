@@ -173,8 +173,19 @@ input {
 
 
 
+/*#cowbell {*/
+/*    pointer-events: none;*/
+/*    background: #7a1527;*/
+/*}*/
 
-
+/*#cowbell::-ms-fill-lower {*/
+/*    background: #777;*/
+/*    border-radius: 10px;*/
+/*}*/
+/*#cowbell::-ms-fill-upper {*/
+/*    background: #ddd;*/
+/*    border-radius: 10px;*/
+/*}*/
 
 
 

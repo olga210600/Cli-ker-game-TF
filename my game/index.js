@@ -2,10 +2,12 @@ const form = document.querySelector('.form')
 const submit = document.querySelector('.submit')
 const fightWrapper = document.querySelector('.fight-wrapper')
 const formWrapper = document.querySelector('.form-wrapper')
+const myFighter = document.querySelector('.myFighter')
 const fighterName = document.querySelector('.fighterName')
 const exit = document.querySelector('.exit')
 const bossWrapper = document.querySelector('.bossWrapper')
 const fighterBoss = document.querySelector('.fighterBoss')
+const audioTag1 = document.querySelector('.audioTag1')
 
 let values
 
@@ -47,6 +49,9 @@ const validateEmail = (email) => {
     return true
 };
 
+function play_single_sound() {
+   audioTag1.play();
+}
 
 function getFormElement(event) {
     event.preventDefault();
@@ -85,22 +90,46 @@ submit.addEventListener('click', getFormElement)
 
 //first page
 
+let currentSrcFighter = "img/myFighter-second-position.svg"
+
+// const createMyFighter = () => {
+//     return `
+//
+//     <img src= ${currentSrcFighter}>
+//     `
+// }
+
+// createMyFighter()
+
+
+
+//
+// <input type="range" id="cowbell" name="cowbell"
+// min="0" max="${boss.life}" value="${boss.life}" step="1">
+
+
 const createBoss = (boss) => {
     return `
         <div>${boss.life}</div>
+     
         <h3>${boss.name}</h3>
         <div>
         
-            <img class="fighterBoss" onclick="bossAttack()" src=${boss.image}>
+            <img class="fighterBoss" onclick="bossAttack()"  src=${boss.image}>
         </div>
     `
 }
 
+myFighter.img = undefined;
+
+
 const bossAttack = () => {
+    play_single_sound()
     const lastBossIndex = bosses.length - 1;
 
     if (currentBossIndex > lastBossIndex) {
         bossWrapper.innerHTML = `<h1>Game over</h1>`
+            myFighter.style.display = 'none'
         return;
     }
 
@@ -116,6 +145,13 @@ const bossAttack = () => {
     }
 
     bossWrapper.innerHTML = createBoss(bosses[currentBossIndex])
+
+    addEventListener('click', ev => {
+        myFighter.innerHTML = ''
+        console.log('second')
+        // myFighter.img.src ="img/myFighter-second-position.svg"
+    })
+
 }
 
 const startGame = () => {
