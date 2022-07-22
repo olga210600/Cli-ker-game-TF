@@ -1,0 +1,181 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    font-family: sans-serif;
+}
+
+.form-wrapper {
+      /*display: none;*/
+    margin: 0px;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+    background: url("img/video-igry-sekiro-shadows--die-twice-sek-1504827.jpg") no-repeat center top fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    object-fit: cover;
+   display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    width: 450px;
+    height: 300px;
+    background: black;
+    opacity: 0.8;
+    margin: auto;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.personal-info {
+    font-size: 27px;
+    color: white;
+    text-align: center;
+    margin: 34px;
+
+    /*font-family: sans-serif;*/
+}
+
+.section-wrapper {
+    justify-content: space-between;
+    width: 330px;
+    margin: 20px auto;
+
+
+}
+
+.name-label {
+    font-size: 20px;
+    margin-right: 10px;
+    color: white;
+}
+
+
+.email-label {
+    font-size: 20px;
+    margin-right: 14px;
+    color: white;
+
+}
+
+input {
+    width: 250px;
+    height: 30px;
+    background: black;
+    color: white;
+    font-size: 17px;
+    text-align: center;
+}
+
+.submit-wrapper {
+    width: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.submit {
+    height: 40px;
+    width: 150px;
+    background: green;
+    border-radius: 5px;
+    /*    margin: auto;*/
+    /*    text-align: center;*/
+    /*    justify-content: center;*/
+
+
+}
+
+
+/* CSS */
+.submit {
+    background-color: #7a1527;
+    /*background-color: #1b942f;*/
+    background-image: none;
+    border: 1px solid #000;
+    border-radius: 4px;
+    box-shadow: #fff 4px 4px 0 0, #000 4px 4px 0 1px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: ITCAvantGardeStd-Bk, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    margin: 0 5px 10px 0;
+    overflow: visible;
+    padding: 12px 40px;
+    text-align: center;
+    text-transform: none;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.submit:focus {
+    text-decoration: none;
+}
+
+.button-50:hover {
+    text-decoration: none;
+}
+
+.submit:active {
+    box-shadow: rgba(0, 0, 0, .125) 0 3px 5px inset;
+    outline: 0;
+}
+
+.submit:not([disabled]):active {
+    box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
+    transform: translate(2px, 2px);
+}
+
+
+
+
+.fight-wrapper{
+  display: none;
+    /*display: block;*/
+    background: green;
+    /*margin: 0px;*/
+    /*padding: 0;*/
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+    background: url("img/video-igry-sekiro-shadows--die-twice-sek-1504827.jpg") no-repeat center top fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    object-fit: cover;
+    /*display: flex;*/
+    justify-content: center;
+    align-items: center;
+}
+
+.fighterName{
+    margin: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
