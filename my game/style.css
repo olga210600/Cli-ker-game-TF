@@ -142,7 +142,7 @@ input {
 }
 
 .start-game-wrapper{
-    /*display: none;*/
+    display: none;
     background-image: url("img/legend-first.jpg");
     width: 100vw;
     height: 100vh;
@@ -151,7 +151,7 @@ input {
     -o-background-size: cover;
     background-size: cover;
     object-fit: cover;
-    display: flex;
+    /*display: flex;*/
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
@@ -261,17 +261,17 @@ input {
 
 
 .fight-wrapper{
-  display: none;
-  /*  display: block;*/
+  /*display: none;*/
+    display: block;
 
     /*display: flex;*/
     /*background: green;*/
     /*margin: 0px;*/
     /*padding: 0;*/
-    box-sizing: border-box;
+    /*box-sizing: border-box;*/
     width: 100vw;
     height: 100vh;
-    /*background: url("img/video-igry-sekiro-shadows--die-twice-sek-1504827.jpg") no-repeat center top fixed;*/
+    background: url("img/1641130260_1-abrakadabra-fun-p-derevnya-fon-gacha-1.jpg") no-repeat center top fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -284,16 +284,77 @@ input {
 
 .fightersMainWrapper{
     display: flex;
+    /*margin: auto;*/
+    justify-content: center;
+    margin-top: 73px;
+    margin-left: -227px
+}
+.my-fighter-main-wrapper {
+    /*display: flex;*/
+    justify-content: center;
+    align-items: center;
+}
+
+.my-fighter-img{
+    margin: 10px;
+    width: 500px;
+}
+
+.myFighterResult{
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+    background: lightgray;
+    width: 400px;
+    height: 50px;
+    border-radius: 5px;
+}
+
+.current-boss-result{
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.current-boss-main-wrapper{
+    margin: 10px;
 }
 
 .fighterName{
     margin: 0;
 }
 
+.extra-life-btn-wrapper {
+    width: 50px;
+    height: 50px;
+}
+
 .extraLife{
     display: none;
 }
 
+.result-action-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90px;
+}
+
+.resultAction{
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    height: 85px;
+    width: 600px;
+    /*background: #7a1527;*/
+    text-align: center;
+    font-family: sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 
 

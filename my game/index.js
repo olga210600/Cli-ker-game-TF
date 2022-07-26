@@ -32,7 +32,7 @@ const bosses = [
     {
         name: 'Stick Man',
         life: 5,
-        image: "img/fighter0.svg",
+        image: "img/boss3.svg",
     }, {
         name: 'Nindja Man',
         life: 10,
@@ -191,9 +191,12 @@ submit.addEventListener('click', getFormElement)
 
 const createBoss = (boss) => {
     return `
-        <div>${boss.life}</div>
-     
-        <h3>${boss.name}</h3>
+<div class="current-boss-result">
+<p>Fighter: ${boss.name}.&nbsp;</p>
+ <div>  Life: ${boss.life}.</div>
+       
+</div>
+       
         <div>
             <img class="fighterBoss" onclick="getResultAttack( getBossAction(3))"  src=${boss.image}>
         </div>
@@ -208,17 +211,20 @@ const getBossAction = (max) => {
 const getResultAttack = (value) => {
     switch (value) {
         case 0 :
-            resultAction.innerHTML = 'Аттака отбита';
+            resultAction.innerHTML = 'The attack was repulsed';
+            resultAction.style.background = 'orange'
             secondMusic()
             break;
         case 1 :
             resultAction.innerHTML = ''
-            resultAction.innerHTML = 'уменьшить у босса';
+            resultAction.innerHTML = 'Damage dealt to the boss';
+            resultAction.style.background = 'green'
             bossAttack()
             break;
         case 2 :
             resultAction.innerHTML = ''
-            resultAction.innerHTML = 'уменьшить у моего бойца';
+            resultAction.innerHTML = 'Aaron\'s damage is done';
+            resultAction.style.background = 'red'
             thirdMusic()
             getMyFighterWound()
             break;
@@ -233,7 +239,7 @@ const getMyFighterWound = () => {
         extraLife.style.display = 'block'
     }
     myFighterResult.innerHTML = ''
-    myFighterResult.innerHTML = myFighterInfo.life
+    myFighterResult.innerHTML =`Fighter: Aaron.  Life: ${myFighterInfo.life}`
     setMyFighterInfo()
 }
 
@@ -292,6 +298,9 @@ const endGame = () => {
 const getExtraLife = () => {
 
     myFighterInfo.life += 20
+    // setMyFighterInfo()
+    myFighterResult.innerHTML =`Fighter: Aaron.  Life: ${myFighterInfo.life}`
+    setMyFighterInfo()
     console.log('there',myFighterInfo.life)
 
 }
