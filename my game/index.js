@@ -12,6 +12,13 @@ const audioTag2 = document.querySelector('.audioTag2')
 const audioTag3 = document.querySelector('.audioTag3')
 const resultAction = document.querySelector('.resultAction')
 const myFighterResult = document.querySelector('.myFighterResult')
+const extraLife = document.querySelector('.extraLife')
+const greeting = document.querySelector('.greeting')
+const startGameWrapper = document.querySelector('.start-game-wrapper')
+const legendGameBtn = document.querySelector('.legend-game-btn')
+const legendWrapper = document.querySelector('.legend-wrapper')
+const startGameBtn = document.querySelector('.start-game-btn')
+const legendFightBtn = document.querySelector('.legend-fight-btn')
 
 let values
 
@@ -31,6 +38,21 @@ const bosses = [
         life: 10,
         image: "img/21039920061621418911.svg",
     },
+
+
+    {
+        name: 'Nindja Man',
+        life: 12,
+        image: "img/boss3.svg",
+    },{
+        name: 'Nindja Man',
+        life: 15,
+        image: "img/boss4.svg",
+    },{
+        name: 'Nindja Man',
+        life: 20,
+        image: "img/boss5.svg",
+    },
 ]
 
 let currentBossIndex = 0;
@@ -41,6 +63,20 @@ const setUserName = (element) => {
     localStorage.setItem('player', JSON.stringify(element))
 }
 
+
+
+let parsePlayer
+const getPlayerInfo = () => {
+
+    let player = localStorage.getItem('player')
+     parsePlayer = JSON.parse(player)
+
+
+    // myFighterResult.innerHTML = currentMyFighterInfo.life
+
+}
+
+
 const setBossesInfo = () => {
     localStorage.setItem('bosses', JSON.stringify(bosses))
 }
@@ -48,6 +84,8 @@ const setBossesInfo = () => {
 const setMyFighterInfo = () => {
     localStorage.setItem('myFighter', JSON.stringify(myFighterInfo))
 }
+
+
 
 const getMyFighterInfo = () => {
 
@@ -69,6 +107,33 @@ const validateEmail = (email) => {
 
     return true
 };
+
+
+const getUserNameForGreeting = () => {
+    getPlayerInfo()
+
+    greeting.innerHTML = `Welcome to the game, ${ parsePlayer.name}. Choose the following action`
+}
+
+const watchLegend = () => {
+    startGameWrapper.style.display = 'none';
+    legendWrapper.style.display = 'flex'
+}
+
+const openFighterPage = () => {
+    legendWrapper.style.display = 'none';
+    startGameWrapper.style.display = 'none';
+    fightWrapper.style.display = 'block';
+    console.log(5)
+
+}
+
+
+legendGameBtn.addEventListener('click', watchLegend)
+startGameBtn.addEventListener('click',openFighterPage )
+legendFightBtn.addEventListener('click',openFighterPage )
+
+
 
 function play_single_boss_sound() {
    audioTag1.play();
@@ -105,7 +170,8 @@ function getFormElement(event) {
                     email.value = ''
 
                     formWrapper.style.display = 'none'
-                    fightWrapper.style.display = 'block'
+                    startGameWrapper.style.display = 'flex'
+                    // fightWrapper.style.display = 'block'
                 } else {
                     email.value = ''
                 }
@@ -113,6 +179,7 @@ function getFormElement(event) {
         }
         setBossesInfo()
         setMyFighterInfo()
+        getUserNameForGreeting()
     }
 }
 
@@ -133,13 +200,6 @@ const createBoss = (boss) => {
     `
 }
 
-const myFighterLife = () => {
-    return `
-    <p>${myFighterInfo.life}</p>
-    `
-}
-
-myFighterResult.innerHTML = myFighterLife()
 
 const getBossAction = (max) => {
    return  Math.floor(Math.random() * max);
@@ -167,9 +227,14 @@ const getResultAttack = (value) => {
 
 const getMyFighterWound = () => {
   console.log(--myFighterInfo.life)
-    setMyFighterInfo()
-    // getMyFighterInfo()
 
+    //поменять значение с 38 на 10
+    if (myFighterInfo.life === 38) {
+        extraLife.style.display = 'block'
+    }
+    myFighterResult.innerHTML = ''
+    myFighterResult.innerHTML = myFighterInfo.life
+    setMyFighterInfo()
 }
 
 const secondMusic = () => {
@@ -204,6 +269,7 @@ const bossAttack = () => {
 
     bossWrapper.innerHTML = createBoss(bosses[currentBossIndex])
 
+
     setBossesInfo()
 }
 
@@ -220,7 +286,18 @@ const endGame = () => {
     startGame()
 }
 
+
+
+
+const getExtraLife = () => {
+
+    myFighterInfo.life += 20
+    console.log('there',myFighterInfo.life)
+
+}
+
 exit.addEventListener('click', endGame)
+extraLife.addEventListener('click', getExtraLife)
 
 
 

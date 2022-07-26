@@ -8,7 +8,7 @@ body {
 }
 
 .form-wrapper {
-      /*display: none;*/
+      display: none;
     margin: 0px;
     padding: 0;
     box-sizing: border-box;
@@ -20,7 +20,7 @@ body {
     -o-background-size: cover;
     background-size: cover;
     object-fit: cover;
-   display: flex;
+   /*display: flex;*/
     justify-content: center;
     align-items: center;
 }
@@ -141,19 +141,80 @@ input {
     transform: translate(2px, 2px);
 }
 
-
-
-
-.fight-wrapper{
-  display: none;
-    /*display: block;*/
-    background: green;
-    /*margin: 0px;*/
-    /*padding: 0;*/
-    box-sizing: border-box;
+.start-game-wrapper{
+    /*display: none;*/
+    background-image: url("img/legend-first.jpg");
     width: 100vw;
     height: 100vh;
-    background: url("img/video-igry-sekiro-shadows--die-twice-sek-1504827.jpg") no-repeat center top fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.greeting-wrapper{
+    width: 600px;
+    height: 250px;
+    background: lightgray;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    opacity: 0.9;
+    flex-wrap: wrap;
+}
+
+.greeting-user-wrapper{
+    display: block;
+    width: 600px;
+    margin: 25px 0 0 0;
+    text-align: center;
+    font-size: 28px;
+}
+
+.greeting-btn{
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.start-game-btn{
+    width: 200px;
+    height: 70px;
+    background: forestgreen;
+    border: none;
+    border-radius: 5px;
+    font-size: 27px;
+    color: white;
+    font-weight: bold;
+    box-sizing: border-box;
+    margin: 10px;
+}
+
+.legend-game-btn{
+    width: 200px;
+    height: 70px;
+    background: orange;
+    border: none;
+    border-radius: 5px;
+    font-size: 27px;
+    color: white;
+    font-weight: bold;
+    box-sizing: border-box;
+    margin: 10px;
+
+}
+
+.legend-wrapper {
+    display: none;
+    background-image: url("img/legend-city.jpg") ;
+    width: 100vw;
+    height: 100vh;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -164,10 +225,74 @@ input {
     align-items: center;
 }
 
+.legend-story  p{
+    font-family: Snell Roundhand, cursive ;
+    color: white;
+    font-size: 30px;
+    /*margin: 0;*/
+    padding: 10px;
+    width: 900px;
+
+    background: black;
+    opacity: 0.5;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    /*font-weight: bold;*/
+    /*animation: ani 2.5s forwards;*/
+    /*transition: 0.55s opacity, 0.55s visibility;*/
+}
+
+.legend-fight-btn {
+    width: 300px;
+    height: 100px;
+    border: none;
+    border-radius: 5px;
+    background: orange;
+    font-size: 30px;
+    color: white;
+    opacity: 0.8;
+    font-family: Snell Roundhand, cursive ;
+    margin-left: 310px
+
+}
+
+
+
+
+.fight-wrapper{
+  display: none;
+  /*  display: block;*/
+
+    /*display: flex;*/
+    /*background: green;*/
+    /*margin: 0px;*/
+    /*padding: 0;*/
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+    /*background: url("img/video-igry-sekiro-shadows--die-twice-sek-1504827.jpg") no-repeat center top fixed;*/
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    object-fit: cover;
+    /*display: flex;*/
+    justify-content: center;
+    align-items: center;
+}
+
+.fightersMainWrapper{
+    display: flex;
+}
+
 .fighterName{
     margin: 0;
 }
 
+.extraLife{
+    display: none;
+}
 
 
 
