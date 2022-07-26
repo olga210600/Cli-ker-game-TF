@@ -7,6 +7,140 @@ body {
     font-family: sans-serif;
 }
 
+
+.popup{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    font-size: 22px;
+    font-family: sans-serif;
+
+
+}
+
+
+.popup h3 {
+    text-align: center;
+    margin: 40px 0 0 0;
+}
+
+.close-wrapper {
+    background: red;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+.close{
+    color:white;
+    font-size: 30px;
+    font-weight: bold;
+    /*margin-left: auto;*/
+
+
+
+
+}
+
+.close:hover,
+.close:focus{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.popup-header{
+    background-color: #5c82b8;
+    color: white;
+    display: flex;
+    padding: 2px 16px;
+    justify-content: space-between;
+    align-items: center;
+    /*justify-content: center;*/
+}
+
+.popup-body{
+    padding: 2px 16px;
+}
+
+
+.game-explanation {
+    text-align: justify;
+    text-indent: 3em;
+}
+
+.img-rules-wrapper {
+    display: flex;
+    align-items: center;
+    /*justify-content: center;*/
+
+}
+
+.img-rules-wrapper img {
+    margin: 20px;
+}
+
+.popup-content{
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 800px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+}
+
+@keyframes animatop {
+    from{
+        top: -300px;
+        opacity: 0;
+    }
+    to{
+        top: 0;
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .form-wrapper {
       display: none;
     margin: 0px;
@@ -282,17 +416,26 @@ input {
     align-items: center;
 }
 
+.exit{
+    margin: 20px;
+}
+
+.rules{
+    margin: 20px 10px;
+}
+
 .fightersMainWrapper{
     display: flex;
     /*margin: auto;*/
     justify-content: center;
     margin-top: 73px;
-    margin-left: -227px
+    /*margin-left: -227px*/
 }
-.my-fighter-main-wrapper {
+.fighter-main-wrapper {
     /*display: flex;*/
     justify-content: center;
     align-items: center;
+    padding: 0;
 }
 
 .my-fighter-img{
@@ -300,23 +443,53 @@ input {
     width: 500px;
 }
 
-.myFighterResult{
-    font-size: 30px;
-    color: white;
-    font-weight: bold;
-    background: lightgray;
-    width: 400px;
-    height: 50px;
-    border-radius: 5px;
+.fighterBoss {
+    margin-top: 20px;
 }
 
-.current-boss-result{
+.info-wrapper-boss {
+    margin-top: -10px;
+     background: black;
+     width: 500px;
+     height: 50px;
     font-size: 30px;
     color: white;
     font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
+    /*margin: 0;*/
+    opacity: 0.7;
+
+}
+
+.info-wrapper {
+    background: black;
+    width: 500px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.7;
+    /*margin: 0;*/
+}
+
+.myFighterResult{
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+
+    border-radius: 5px;
+}
+
+.info-wrapper p{
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
 }
 .current-boss-main-wrapper{
     margin: 10px;
@@ -354,6 +527,7 @@ input {
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 10px;
 }
 
 

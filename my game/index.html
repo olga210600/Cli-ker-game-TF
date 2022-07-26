@@ -72,8 +72,38 @@
 </div>
 
 <div class="fight-wrapper">
-    <h1 class="fighterName">Fight</h1>
-    <button class="exit">Exit</button>
+
+        <img class="exit"  src="img/exit-svgrepo-com.svg">
+
+    <img class="rules"id="myBtn" src="img/book-svgrepo-com%20(1).svg">
+
+    <div id="mypopup" class='popup'>
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Rules</h2>
+                <div class="close-wrapper">
+                    <span class="close">&times;</span>
+                </div>
+
+            </div>
+
+            <div class="popup-body">
+                <p class="game-explanation">To start the game you need to click on the image of the boss, it is located on the right. Each press will generate a response as to whether the attack was successful, and depending on this will take the life of either the player's fighter or the boss.</p>
+                <h3>Navigation</h3>
+                <div class="img-rules-wrapper">
+                    <img src="img/exit-svgrepo-com.svg">
+                    <p>Will exit the game and return to the registration page.</p>
+                </div>
+                <div class="img-rules-wrapper">
+                    <img src="img/health-care-svgrepo-com.svg">
+                    <p>This button appears if the player has 5 lives left, clicking on it will add 5 lives to the total.</p>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
 
     <div>
         <audio class="audioTag1" src="music/70cd38f1302496c.mp3"></audio>
@@ -83,16 +113,19 @@
             <p class="resultAction"></p>
         </div>
         <div class="fightersMainWrapper">
-            <div class="my-fighter-main-wrapper">
-                <div class="myFighterResult">Fighter: Aaron.   Life: 40.</div>
+            <div class="fighter-main-wrapper">
+                <div class="info-wrapper">
+                    <div class="myFighterResult">Fighter: Aaron.   Life: 20.</div>
+                </div>
+
 <!--                <div class="myFighterResult">   Life: 40</div>-->
                 <div class="extra-life-btn-wrapper">
-                    <button class="extraLife">Add life</button>
+                    <img class="extraLife" src="img/health-care-svgrepo-com.svg" />
                 </div>
 
                 //
                 <div class="my-fighter-img">
-                    <img class="myFighter" src="img/myfighte2.svg">
+                    <img class="myFighter" src="img/myfighte2.svg" alt="add life (+20)" title="add life (+20)"/>
                 </div>
 
             </div>
@@ -102,11 +135,15 @@
                 <div class="bossWrapper"></div>
             </div>
 
+
         </div>
 
     </div>
 
 </div>
+
+
+
 
 <script src="index.js"></script>
 </body>

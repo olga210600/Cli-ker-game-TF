@@ -20,12 +20,48 @@ const legendWrapper = document.querySelector('.legend-wrapper')
 const startGameBtn = document.querySelector('.start-game-btn')
 const legendFightBtn = document.querySelector('.legend-fight-btn')
 
+
+
+const popup = document.getElementById('mypopup');
+const popupToggle = document.getElementById('myBtn');
+const popupClose = document.querySelector('.close');
+
+
+popupToggle.onclick = function (){
+    popup.style.display = 'block';
+};
+
+popupClose.onclick = function (){
+    popup.style.display = 'none';
+}
+
+
+window.onclick = function (e){
+    if(e.target === popup){
+        popup.style.display = 'none';
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 let values
 
 let currentBoss
 
 const myFighterInfo = {
-    life: 40
+    life: 20
 }
 
 const bosses = [
@@ -42,17 +78,9 @@ const bosses = [
 
     {
         name: 'Nindja Man',
-        life: 12,
-        image: "img/boss3.svg",
-    },{
-        name: 'Nindja Man',
-        life: 15,
-        image: "img/boss4.svg",
-    },{
-        name: 'Nindja Man',
         life: 20,
-        image: "img/boss5.svg",
-    },
+        image: "img/boss3.svg",
+    }
 ]
 
 let currentBossIndex = 0;
@@ -64,12 +92,11 @@ const setUserName = (element) => {
 }
 
 
-
 let parsePlayer
 const getPlayerInfo = () => {
 
     let player = localStorage.getItem('player')
-     parsePlayer = JSON.parse(player)
+    parsePlayer = JSON.parse(player)
 
 
     // myFighterResult.innerHTML = currentMyFighterInfo.life
@@ -84,7 +111,6 @@ const setBossesInfo = () => {
 const setMyFighterInfo = () => {
     localStorage.setItem('myFighter', JSON.stringify(myFighterInfo))
 }
-
 
 
 const getMyFighterInfo = () => {
@@ -112,7 +138,7 @@ const validateEmail = (email) => {
 const getUserNameForGreeting = () => {
     getPlayerInfo()
 
-    greeting.innerHTML = `Welcome to the game, ${ parsePlayer.name}. Choose the following action`
+    greeting.innerHTML = `Welcome to the game, ${parsePlayer.name}. Choose the following action`
 }
 
 const watchLegend = () => {
@@ -130,21 +156,20 @@ const openFighterPage = () => {
 
 
 legendGameBtn.addEventListener('click', watchLegend)
-startGameBtn.addEventListener('click',openFighterPage )
-legendFightBtn.addEventListener('click',openFighterPage )
-
+startGameBtn.addEventListener('click', openFighterPage)
+legendFightBtn.addEventListener('click', openFighterPage)
 
 
 function play_single_boss_sound() {
-   audioTag1.play();
+    audioTag1.play();
 }
 
 function play_single_repulsed_attack_sound() {
-   audioTag2.play();
+    audioTag2.play();
 }
 
 function play_single_myFighter_sound() {
-   audioTag3.play();
+    audioTag3.play();
 }
 
 function getFormElement(event) {
@@ -186,26 +211,47 @@ function getFormElement(event) {
 submit.addEventListener('click', getFormElement)
 
 //first page
+// const a = (element) => {
+//     switch (element) {
+//         case element === 5:
+//             console.log(element, 'element')
+//          return 5
+//             break;
+//         case element === 10:
+//            return 10
+//             break;
+//         case element === 15:
+//             return 15
+//             break;
+//         case element === 20:
+//            return 20
+//             break;
+//
+//     }
+// }
 
 
+// <p>Fighter: ${boss.name}.&nbsp;Life: ${boss.life}.</p>
 
 const createBoss = (boss) => {
     return `
-<div class="current-boss-result">
-<p>Fighter: ${boss.name}.&nbsp;</p>
- <div>  Life: ${boss.life}.</div>
-       
+<div class="fighter-main-wrapper">
+<div class="info-wrapper-boss">
+     <p>Fighter: ${boss.name}. Life: ${boss.life}.</p>
+</p>
+
 </div>
-       
         <div>
             <img class="fighterBoss" onclick="getResultAttack( getBossAction(3))"  src=${boss.image}>
         </div>
+</div>
+
     `
 }
 
 
 const getBossAction = (max) => {
-   return  Math.floor(Math.random() * max);
+    return Math.floor(Math.random() * max);
 }
 
 const getResultAttack = (value) => {
@@ -232,19 +278,22 @@ const getResultAttack = (value) => {
 }
 
 const getMyFighterWound = () => {
-  console.log(--myFighterInfo.life)
+    console.log(--myFighterInfo.life)
 
     //поменять значение с 38 на 10
-    if (myFighterInfo.life === 38) {
+    if (myFighterInfo.life === 5) {
         extraLife.style.display = 'block'
     }
+    if (myFighterInfo.life > 5) {
+        extraLife.style.display = 'none'
+    }
     myFighterResult.innerHTML = ''
-    myFighterResult.innerHTML =`Fighter: Aaron.  Life: ${myFighterInfo.life}`
+    myFighterResult.innerHTML = `Fighter: Aaron.  Life: ${myFighterInfo.life}`
     setMyFighterInfo()
 }
 
 const secondMusic = () => {
-   play_single_repulsed_attack_sound()
+    play_single_repulsed_attack_sound()
 }
 
 const thirdMusic = () => {
@@ -258,7 +307,7 @@ const bossAttack = () => {
 
     if (currentBossIndex > lastBossIndex) {
         bossWrapper.innerHTML = `<h1>Game over</h1>`
-            myFighter.style.display = 'none'
+        myFighter.style.display = 'none'
         return;
     }
 
@@ -293,15 +342,13 @@ const endGame = () => {
 }
 
 
-
-
 const getExtraLife = () => {
 
-    myFighterInfo.life += 20
+    myFighterInfo.life += 5
     // setMyFighterInfo()
-    myFighterResult.innerHTML =`Fighter: Aaron.  Life: ${myFighterInfo.life}`
+    myFighterResult.innerHTML = `Fighter: Aaron.  Life: ${myFighterInfo.life}`
     setMyFighterInfo()
-    console.log('there',myFighterInfo.life)
+    console.log('there', myFighterInfo.life)
 
 }
 
