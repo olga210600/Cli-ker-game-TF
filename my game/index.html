@@ -37,12 +37,7 @@
             <button class="start-game-btn">Start game</button>
             <button class="legend-game-btn">Game legend</button>
         </div>
-
-
-
-
     </div>
-
 </div>
 
 
@@ -65,30 +60,38 @@
             Shortly thereafter Bari died, and when he learned of his father's decision, the eldest son rebelled and
             decided to kill his younger brother Aaron by force to take power.
         </p>
-        <button class="legend-fight-btn" >Help Aaron save his life!</button>
+        <button class="legend-fight-btn">Help Aaron save his life!</button>
     </div>
-
-
 </div>
 
 <div class="fight-wrapper">
+    <div class="fighter-header-wrapper">
+        <div class="rules-exit-img-wrapper">
+            <img class="exit" src="img/exit-svgrepo-com.svg" alt="Exit" title="Exit">
+            <img class="rules" id="myBtn" src="img/book-svgrepo-com%20(1).svg" alt="Rules" title="rules">
+        </div>
 
-        <img class="exit"  src="img/exit-svgrepo-com.svg">
+        <div class="level-wrapper">
+            <p class="level">Level: 1</p>
+        </div>
 
-    <img class="rules"id="myBtn" src="img/book-svgrepo-com%20(1).svg">
+        <div class="help-wrapper"></div>
+    </div>
 
     <div id="mypopup" class='popup'>
         <div class="popup-content">
             <div class="popup-header">
                 <h2>Rules</h2>
-                <div class="close-wrapper">
-                    <span class="close">&times;</span>
+<!--                **********************************************************-->
+                <div class="close-ruses-wrapper">
+                    <span class="close-rules">&times;</span>
                 </div>
-
             </div>
 
             <div class="popup-body">
-                <p class="game-explanation">To start the game you need to click on the image of the boss, it is located on the right. Each press will generate a response as to whether the attack was successful, and depending on this will take the life of either the player's fighter or the boss.</p>
+                <p class="game-explanation">To start the game you need to click on the image of the boss, it is located
+                    on the right. Each press will generate a response as to whether the attack was successful, and
+                    depending on this will take the life of either the player's fighter or the boss.</p>
                 <h3>Navigation</h3>
                 <div class="img-rules-wrapper">
                     <img src="img/exit-svgrepo-com.svg">
@@ -96,53 +99,73 @@
                 </div>
                 <div class="img-rules-wrapper">
                     <img src="img/health-care-svgrepo-com.svg">
-                    <p>This button appears if the player has 5 lives left, clicking on it will add 5 lives to the total.</p>
+                    <p>This button appears if the player has 5 lives left, clicking on it will add 5 lives to the
+                        total.</p>
                 </div>
             </div>
-
-
         </div>
     </div>
 
+    <div class="current-fighters-wrapper">
+        <div>
+            <audio class="audioTag1" src="music/70cd38f1302496c.mp3"></audio>
+            <audio class="audioTag2" src="music/opoveschenie-ob-oshibke.mp3"></audio>
+            <audio class="audioTag3" src="music/second.mp3"></audio>
 
-    <div>
-        <audio class="audioTag1" src="music/70cd38f1302496c.mp3"></audio>
-        <audio class="audioTag2" src="music/opoveschenie-ob-oshibke.mp3"></audio>
-        <audio class="audioTag3" src="music/second.mp3"></audio>
-        <div class="result-action-wrapper" >
-            <p class="resultAction"></p>
-        </div>
-        <div class="fightersMainWrapper">
-            <div class="fighter-main-wrapper">
-                <div class="info-wrapper">
-                    <div class="myFighterResult">Fighter: Aaron.   Life: 20.</div>
+            <div class="result-action-wrapper">
+                <p class="resultAction"></p>
+            </div>
+
+            <div class="fightersMainWrapper">
+                <div class="fighter-main-wrapper">
+                    <div class="info-wrapper">
+                        <div class="myFighterResult">Fighter: Aaron. Life: 20.</div>
+                    </div>
+
+                    <div class="extra-life-btn-wrapper">
+                        <img class="extraLife" src="img/health-care-svgrepo-com.svg" alt="add life (+10)"
+                             title="add life (+10)"/>
+                    </div>
+
+                    <div class="my-fighter-img">
+                        <img class="myFighter" src="img/myfighte2.svg"/>
+                    </div>
+
                 </div>
 
-<!--                <div class="myFighterResult">   Life: 40</div>-->
-                <div class="extra-life-btn-wrapper">
-                    <img class="extraLife" src="img/health-care-svgrepo-com.svg" />
-                </div>
-
-                //
-                <div class="my-fighter-img">
-                    <img class="myFighter" src="img/myfighte2.svg" alt="add life (+20)" title="add life (+20)"/>
+                <div class="current-boss-main-wrapper">
+                    <div class="bossWrapper"></div>
                 </div>
 
             </div>
-
-
-            <div class="current-boss-main-wrapper">
-                <div class="bossWrapper"></div>
-            </div>
-
-
         </div>
-
     </div>
+
 
 </div>
 
 
+<div class="final-result">
+
+    <div class="game-over"></div>
+    <button class="result-btn">Result</button>
+</div>
+
+<div class='final-popup'>
+    <div class="popup-content">
+        <div class="popup-header">
+            <h2>Result</h2>
+            <div class="close-wrapper">
+                <span class="close">&times;</span>
+            </div>
+        </div>
+
+        <div class="popup-result-body">
+            <div class="boss-result-info"></div>
+        </div>
+    </div>
+</div>
+<!--</div>-->
 
 
 <script src="index.js"></script>

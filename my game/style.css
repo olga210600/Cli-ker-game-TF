@@ -21,8 +21,6 @@ body {
     background-color: rgba(0, 0, 0, 0.4);
     font-size: 22px;
     font-family: sans-serif;
-
-
 }
 
 
@@ -35,7 +33,7 @@ body {
     background: red;
     width: 40px;
     height: 40px;
-    border-radius: 50%;
+    /*border-radius: 50%;*/
     display: flex;
     align-items: center;
     justify-content: center;
@@ -416,12 +414,42 @@ input {
     align-items: center;
 }
 
+.fighter-header-wrapper{
+    width: 100%;
+    display: flex;
+}
+
+.rules-exit-img-wrapper{
+    /*width: 150px;*/
+    display: flex;
+    width: 25%;
+}
+
 .exit{
     margin: 20px;
 }
 
 .rules{
     margin: 20px 10px;
+}
+
+.level-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+.level{
+    color: black;
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0;
+    text-shadow: 4px 3px 0px #fff, 9px 8px 0px rgba(0,0,0,0.15);
+}
+
+.help-wrapper{
+    width: 25%;
 }
 
 .fightersMainWrapper{
@@ -460,6 +488,7 @@ input {
     justify-content: center;
     /*margin: 0;*/
     opacity: 0.7;
+    border-radius: 10px;
 
 }
 
@@ -471,6 +500,7 @@ input {
     align-items: center;
     justify-content: center;
     opacity: 0.7;
+    border-radius: 10px;
     /*margin: 0;*/
 }
 
@@ -532,20 +562,91 @@ input {
 
 
 
+.final-popup{
+    /*display: block;*/
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    font-size: 22px;
+    font-family: sans-serif;
+    box-sizing: border-box;
 
-/*#cowbell {*/
-/*    pointer-events: none;*/
-/*    background: #7a1527;*/
-/*}*/
+}
 
-/*#cowbell::-ms-fill-lower {*/
-/*    background: #777;*/
-/*    border-radius: 10px;*/
-/*}*/
-/*#cowbell::-ms-fill-upper {*/
-/*    background: #ddd;*/
-/*    border-radius: 10px;*/
-/*}*/
+.boss-result-info {
+    /*margin: 10px 10px 20px 10px;*/
+    font-size: 27px;
+    padding:  0 30px;
+    box-sizing: border-box;
+    /*display: flex;*/
+
+}
+
+.boss-name {
+    color: #7a1527;
+    display: flex;
+    font-size: 30px;
+    /*text-align: center;*/
+    justify-content: center;
+}
+
+.strikes-repelled{
+    /*color: orange;*/
+    width: 100%;
+    height: 50px;
+    background: lightgray;
+    font-family: sans-serif;
+    /*display: flex;*/
+    /*text-align: center;*/
+    /*justify-content: center;*/
+    padding-top: 8px;
+    padding-left: 20px;
+    box-sizing: border-box;
+
+}
+
+
+
+.missed-hits{
+    width: 100%;
+    height: 50px;
+    background: lightgray;
+    font-family: sans-serif;
+    /*display: flex;*/
+    /*text-align: center;*/
+    /*justify-content: center;*/
+    padding-top: 8px;
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+.strikes-taken {
+    width: 100%;
+    height: 50px;
+    background: lightgray;
+    font-family: sans-serif;
+    /*display: flex;*/
+    /*text-align: center;*/
+    /*justify-content: center;*/
+    padding-top: 8px;
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+
+.boss-result-number {
+    /*font-weight: bold;*/
+}
+
+
+.final-result{
+    display: none;
+}
 
 
 
