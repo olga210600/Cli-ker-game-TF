@@ -1,5 +1,11 @@
 const form = document.querySelector('.form')
+const nameUser = document.querySelector('#name')
+const emailUser = document.querySelector('#email')
+
+// const name = form.querySelector("[name = 'name' ]"),
+    // email = form.querySelector("[name = 'email']");
 const submit = document.querySelector('.submit')
+const clearBtn = document.querySelector('.clear-btn')
 const fightWrapper = document.querySelector('.fight-wrapper')
 const formWrapper = document.querySelector('.form-wrapper')
 const myFighter = document.querySelector('.myFighter')
@@ -33,13 +39,15 @@ const gameOver = document.querySelector('.game-over')
 const resultBtn = document.querySelector('.result-btn')
 const finalPopup = document.querySelector('.final-popup')
 
+
 let values
 
 let currentBoss
 
 const myFighterInfo = {
     // *************************
-    life: 7
+    life: 7,
+    newGame : false
 }
 
 const bosses = [
@@ -95,7 +103,18 @@ let parsePlayer
 const getPlayerInfo = () => {
     let player = localStorage.getItem('player')
     parsePlayer = JSON.parse(player)
+    // if (player !== [] || player !== "" && myFighterInfo.newGame === true) {
+    //     console.log('pleyer yes')
+    //     fightWrapper.style.display = 'flex'
+    // }else {
+    //     console.log('not')
+    // }
+
 }
+// getPlayerInfo()
+
+
+// console.log()
 
 const setBossesInfo = () => {
     localStorage.setItem('bosses', JSON.stringify(bosses))
@@ -118,11 +137,11 @@ const setMyFighterInfo = () => {
     localStorage.setItem('myFighter', JSON.stringify(myFighterInfo))
 }
 
-
+let currentMyFighterInfo
 const getMyFighterInfo = () => {
 
     let fighter = localStorage.getItem('myFighter')
-    let currentMyFighterInfo = JSON.parse(fighter)
+    currentMyFighterInfo = JSON.parse(fighter)
     console.log(currentMyFighterInfo, 'currentMyFighterInfo')
     // myFighterResult.innerHTML = currentMyFighterInfo.life
 
@@ -155,6 +174,38 @@ getMyFighterInfo()
 //     setMyFighterInfoAgain()
 //     getBossInfoAgain()
 // }
+// ************************************************
+
+
+const firstPage =  () =>  {
+    getPlayerInfo()
+
+    console.log(getPlayerInfo(), 8888888888888888888888888888888)
+    console.log(myFighterInfo)
+    //
+    if (localStorage.getItem('player') !== null){
+        fightWrapper.style.display = 'flex'
+        formWrapper.style.display = 'none'
+        // if (currentMyFighterInfo.newGame === true){
+        //     fightWrapper.style.display = 'flex'
+        //     formWrapper.style.display = 'none'
+        //
+        // }
+    }else {
+
+        formWrapper.style.display = 'flex'
+    //
+    }
+
+    // else {
+    //
+    //     formWrapper.style.display = 'flex'
+    //     fightWrapper.style.display = 'none'
+    // }
+}
+
+firstPage()
+
 
 const validateEmail = (email) => {
     String(email)
@@ -170,7 +221,7 @@ const validateEmail = (email) => {
 const getUserNameForGreeting = () => {
     getPlayerInfo()
 
-    greeting.innerHTML = `Welcome to the game, ${parsePlayer.name}. Choose the following action`
+    greeting.innerHTML = `Welcome to the game, ${parsePlayer.name}. Choose the following action.`
 }
 
 const watchLegend = () => {
@@ -181,7 +232,8 @@ const watchLegend = () => {
 const openFighterPage = () => {
     legendWrapper.style.display = 'none';
     startGameWrapper.style.display = 'none';
-    fightWrapper.style.display = 'block';
+    fightWrapper.style.display = 'flex';
+    formWrapper.style.display = 'none'
 
 // setLocalStorage()
 
@@ -192,19 +244,34 @@ const openFighterPage = () => {
 
 }
 // ****************************************************************
+// getPlayerInfo()
+
+console.log(myFighterInfo.newGame)
 const startGameAgain = () => {
-    // localStorage.clear()
-    // // setBossesInfo()
-    // setLocalStorage()
-    // setMyFighterInfo()
+
 
     location.href=location.href;
-
-    console.log(8888888888888888)
-
+    // getPlayerInfo()
+    // if (player){
+    //     console.log('have player')
+    // }
+    // event.preventDefault()
+// getPlayerInfo()
+ myFighterInfo.newGame = true
+    setMyFighterInfo()
+    // if ( myFighterInfo.newGame === true) {
+    //     console.log('pleyer yes')
+    //     fightWrapper.style.display = 'flex'
+    //     formWrapper.style.display = 'none'
+    // }else {
+    //     console.log('not')
+    // }
+    // formWrapper.style.display = 'none';
+    fightWrapper.style.display = 'flex'
 
     finalResult.style.display = 'none'
-    fightWrapper.style.display = 'block';
+    // fightWrapper.style.display = 'block';
+
 }
 
 
@@ -250,6 +317,10 @@ function getFormElement(event) {
                     formWrapper.style.display = 'none'
                     startGameWrapper.style.display = 'flex'
                     // fightWrapper.style.display = 'block'
+
+                    myFighterInfo.newGame = false
+                    setMyFighterInfo()
+
                 } else {
                     email.value = ''
                 }
@@ -261,12 +332,16 @@ function getFormElement(event) {
     }
 }
 
-// const clearInput = () => {
-//     name.value = ''
-//     email.value = ''
-// }
+const clearForm = (event) => {
+    event.preventDefault();
+
+    nameUser.value = ''
+   emailUser.value = ''
+
+}
 
 submit.addEventListener('click', getFormElement)
+clearBtn.addEventListener('click', clearForm)
 
 
 
