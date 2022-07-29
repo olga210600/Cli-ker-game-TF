@@ -1,18 +1,13 @@
 const form = document.querySelector('.form')
 const nameUser = document.querySelector('#name')
 const emailUser = document.querySelector('#email')
-
-// const name = form.querySelector("[name = 'name' ]"),
-    // email = form.querySelector("[name = 'email']");
 const submit = document.querySelector('.submit')
 const clearBtn = document.querySelector('.clear-btn')
 const fightWrapper = document.querySelector('.fight-wrapper')
 const formWrapper = document.querySelector('.form-wrapper')
 const myFighter = document.querySelector('.myFighter')
-// const fighterName = document.querySelector('.fighterName')
 const exit = document.querySelector('.exit')
 const bossWrapper = document.querySelector('.bossWrapper')
-// const fighterBoss = document.querySelector('.fighterBoss')
 const audioTag1 = document.querySelector('.audioTag1')
 const audioTag2 = document.querySelector('.audioTag2')
 const audioTag3 = document.querySelector('.audioTag3')
@@ -26,12 +21,10 @@ const legendWrapper = document.querySelector('.legend-wrapper')
 const startGameBtn = document.querySelector('.start-game-btn')
 const legendFightBtn = document.querySelector('.legend-fight-btn')
 const levelWrapper = document.querySelector('.level')
-
 const popup = document.getElementById('mypopup');
 const popupToggle = document.getElementById('myBtn');
 const popupClose = document.querySelector('.close');
 const closeRules = document.querySelector('.close-rules')
-const popupResultBody = document.querySelector('.popup-result-body')
 const bossResultInfo = document.querySelector('.boss-result-info')
 const currentFightersWrapper = document.querySelector('.current-fighters-wrapper')
 const finalResult = document.querySelector('.final-result')
@@ -39,15 +32,17 @@ const gameOver = document.querySelector('.game-over')
 const resultBtn = document.querySelector('.result-btn')
 const finalPopup = document.querySelector('.final-popup')
 
-
 let values
-
-let currentBoss
+let currentBossIndex = 0;
+let parsePlayer
+let currentBossesInfo
+let currentMyFighterInfo
+const LOW_LIFE_LEVEL = 5;
+const EXTRA_LOW_LIFE_LEVEL = 1;
 
 const myFighterInfo = {
-    // *************************
     life: 7,
-    newGame : false
+    newGame: false
 }
 
 const bosses = [
@@ -56,171 +51,68 @@ const bosses = [
         life: 5,
         image: "img/boss3.svg",
         level: 1,
-        beaten: 0,
-        missed: 0,
-        inflicted: 0
-
     }, {
         name: 'Selevan',
         life: 7,
         image: "img/secondBoss.svg",
         level: 2,
-        beaten: 0,
-        missed: 0,
-        inflicted: 0
-    },
-
-
-    {
+    }, {
         name: 'Duran',
         life: 10,
         image: "img/thirdBoss.svg",
         level: 3,
-        beaten: 0,
-        missed: 0,
-        inflicted: 0
-
     },
 ]
 
-const  finalResultFight = {
+const finalResultFight = {
     beaten: 0,
-    missed:0,
+    missed: 0,
     inflicted: 0,
 }
 
-let currentBossIndex = 0;
-let currentBossIndexResult = 0;
+const setUserName = (element) => localStorage.setItem('player', JSON.stringify(element))
 
-
-const setUserName = (element) => {
-
-    localStorage.setItem('player', JSON.stringify(element))
-}
-
-
-let parsePlayer
 const getPlayerInfo = () => {
     let player = localStorage.getItem('player')
     parsePlayer = JSON.parse(player)
-    // if (player !== [] || player !== "" && myFighterInfo.newGame === true) {
-    //     console.log('pleyer yes')
-    //     fightWrapper.style.display = 'flex'
-    // }else {
-    //     console.log('not')
-    // }
-
-}
-// getPlayerInfo()
-
-
-// console.log()
-
-const setBossesInfo = () => {
-    localStorage.setItem('bosses', JSON.stringify(bosses))
 }
 
-let currentBossesInfo
+const setBossesInfo = () => localStorage.setItem('bosses', JSON.stringify(bosses))
+
 const getBossInfo = () => {
-
     let bosses = localStorage.getItem('bosses')
     currentBossesInfo = JSON.parse(bosses)
-    console.log(currentBossesInfo, 'currentBossesInfo')
-    // myFighterResult.innerHTML = currentMyFighterInfo.life
-    // return currentBossesInfo
-
-
 }
 
+const setMyFighterInfo = () => localStorage.setItem('myFighter', JSON.stringify(myFighterInfo))
 
-const setMyFighterInfo = () => {
-    localStorage.setItem('myFighter', JSON.stringify(myFighterInfo))
-}
-
-let currentMyFighterInfo
 const getMyFighterInfo = () => {
-
     let fighter = localStorage.getItem('myFighter')
     currentMyFighterInfo = JSON.parse(fighter)
-    console.log(currentMyFighterInfo, 'currentMyFighterInfo')
-    // myFighterResult.innerHTML = currentMyFighterInfo.life
-
 }
+
 getMyFighterInfo()
 
-// const setLocalStorage = () => {
-//     const setBossesInfoAgain = () => {
-//         localStorage.setItem('newBosses', JSON.stringify(bosses))
-//     }
-//
-//     let currentBossesInfo
-//     const getBossInfoAgain = () => {
-//         let newBosses = localStorage.getItem('newBosses')
-//         currentBossesInfo = JSON.parse(newBosses)
-//         console.log(currentBossesInfo, 'currentBossesInfo')
-//     }
-//
-//     const setMyFighterInfoAgain = () => {
-//         localStorage.setItem('newMyFighter', JSON.stringify(myFighterInfo))
-//     }
-//
-//     const getMyFighterInfoAgain = () => {
-//         let newFighter = localStorage.getItem('newMyFighter')
-//         let newCurrentMyFighterInfo = JSON.parse(newFighter)
-//         console.log(newCurrentMyFighterInfo, 'new currentMyFighterInfo')
-//     }
-//     getMyFighterInfoAgain()
-//     setBossesInfoAgain()
-//     setMyFighterInfoAgain()
-//     getBossInfoAgain()
-// }
-// ************************************************
-
-
-const firstPage =  () =>  {
+const firstPage = () => {
     getPlayerInfo()
 
-    console.log(getPlayerInfo(), 8888888888888888888888888888888)
-    console.log(myFighterInfo)
-    //
-    if (localStorage.getItem('player') !== null){
-        fightWrapper.style.display = 'flex'
+    if (localStorage.getItem('player') !== null) {
+        fightWrapper.style.display = 'block'
         formWrapper.style.display = 'none'
-        // if (currentMyFighterInfo.newGame === true){
-        //     fightWrapper.style.display = 'flex'
-        //     formWrapper.style.display = 'none'
-        //
-        // }
-    }else {
-
+    } else {
         formWrapper.style.display = 'flex'
-    //
     }
-
-    // else {
-    //
-    //     formWrapper.style.display = 'flex'
-    //     fightWrapper.style.display = 'none'
-    // }
 }
 
 firstPage()
 
-
 const validateEmail = (email) => {
-    String(email)
-        .toLowerCase()
-        .match(
-            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        );
-
-    return true
+    let emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailPattern.test(email);
 };
-
 
 const getUserNameForGreeting = () => {
     getPlayerInfo()
-
     greeting.innerHTML = `Welcome to the game, ${parsePlayer.name}. Choose the following action.`
 }
 
@@ -232,63 +124,31 @@ const watchLegend = () => {
 const openFighterPage = () => {
     legendWrapper.style.display = 'none';
     startGameWrapper.style.display = 'none';
-    fightWrapper.style.display = 'flex';
+    fightWrapper.style.display = 'block';
     formWrapper.style.display = 'none'
-
-// setLocalStorage()
-
-    // endGame()
-    // setMyFighterInfo()
-    // setBossesInfo()
-    // console.log(5)
-
 }
-// ****************************************************************
-// getPlayerInfo()
 
-console.log(myFighterInfo.newGame)
 const startGameAgain = () => {
-
-
-    location.href=location.href;
-    // getPlayerInfo()
-    // if (player){
-    //     console.log('have player')
-    // }
-    // event.preventDefault()
-// getPlayerInfo()
- myFighterInfo.newGame = true
+    location.reload();
+    myFighterInfo.newGame = true
     setMyFighterInfo()
-    // if ( myFighterInfo.newGame === true) {
-    //     console.log('pleyer yes')
-    //     fightWrapper.style.display = 'flex'
-    //     formWrapper.style.display = 'none'
-    // }else {
-    //     console.log('not')
-    // }
-    // formWrapper.style.display = 'none';
-    fightWrapper.style.display = 'flex'
-
+    fightWrapper.style.display = 'block'
     finalResult.style.display = 'none'
-    // fightWrapper.style.display = 'block';
-
 }
-
 
 legendGameBtn.addEventListener('click', watchLegend)
 startGameBtn.addEventListener('click', openFighterPage)
 legendFightBtn.addEventListener('click', openFighterPage)
 
-
-function play_single_boss_sound() {
+function playSingleBossSound() {
     audioTag1.play();
 }
 
-function play_single_repulsed_attack_sound() {
+function playSingleRepulsedAttackSound() {
     audioTag2.play();
 }
 
-function play_single_myFighter_sound() {
+function playSingleMyFighterSound() {
     audioTag3.play();
 }
 
@@ -304,28 +164,22 @@ function getFormElement(event) {
     }
 
     if (name.value.length > 0 && email.value.length > 0) {
-        for (let prop in values) {
+        if (validateEmail(email.value)) {
+            setUserName(values)
+            nameUser.value = ''
+            emailUser.value = ''
 
-            if (prop === 'email') {
-                let email = values[prop]
+            formWrapper.style.display = 'none'
+            startGameWrapper.style.display = 'flex'
 
-                if (validateEmail(email)) {
-                    setUserName(values)
-                    name.value = ''
-                    email.value = ''
+            myFighterInfo.newGame = false
+            setMyFighterInfo()
 
-                    formWrapper.style.display = 'none'
-                    startGameWrapper.style.display = 'flex'
-                    // fightWrapper.style.display = 'block'
-
-                    myFighterInfo.newGame = false
-                    setMyFighterInfo()
-
-                } else {
-                    email.value = ''
-                }
-            }
+        } else {
+            emailUser.value = ''
+            alert('Enter correct email!')
         }
+
         setBossesInfo()
         setMyFighterInfo()
         getUserNameForGreeting()
@@ -336,42 +190,35 @@ const clearForm = (event) => {
     event.preventDefault();
 
     nameUser.value = ''
-   emailUser.value = ''
-
+    emailUser.value = ''
 }
 
 submit.addEventListener('click', getFormElement)
 clearBtn.addEventListener('click', clearForm)
 
-
-
 const createBoss = (boss) => {
     return `
-<div class="fighter-main-wrapper">
-<div class="info-wrapper-boss">
-     <p>Fighter: ${boss.name}. Life: ${boss.life}.</p>
-</p>
-
-</div>
-        <div>
-            <img class="fighterBoss" onclick="getResultAttack( getBossAction(3))"  src=${boss.image}>
+        <div class="fighter-main-wrapper">
+            <div class="info-wrapper-boss">
+               <p>Fighter: ${boss.name}. Life: ${boss.life}.</p>
+            </div>
+            
+            <div>
+               <img class="fighterBoss" onclick="getResultAttack( getBossAction(3))"  src=${boss.image}>
+            </div>
         </div>
-</div>
-
     `
 }
 
-
-const getBossAction = (max) => {
-    return Math.floor(Math.random() * max);
-}
+const getBossAction = (max) => Math.floor(Math.random() * max);
 
 const getResultAttack = (value) => {
+
     switch (value) {
         case 0 :
             resultAction.innerHTML = 'The attack was repulsed';
             resultAction.style.background = 'orange'
-            secondMusic()
+            attackRepulsedMusic()
             getBeatenKicked()
             mouseAction()
             break;
@@ -381,119 +228,83 @@ const getResultAttack = (value) => {
             resultAction.style.background = 'green'
             getMissedKicked()
             bossAttack()
-          mouseAction()
+            mouseAction()
             break;
         case 2 :
             resultAction.innerHTML = ''
             resultAction.innerHTML = 'Aaron\'s damage is done';
             resultAction.style.background = 'red'
-            thirdMusic()
+            damageMusic()
             getMyFighterWound()
             getInflictedKicked()
-           mouseAction()
+            mouseAction()
+            break;
+        default:
             break;
     }
 }
 
+
 const getMyFighterWound = () => {
-    console.log(--myFighterInfo.life)
+    --myFighterInfo.life
 
     //поменять значение с 38 на 10
-    if (myFighterInfo.life === 5) {
+    if (myFighterInfo.life === LOW_LIFE_LEVEL) {
         extraLife.style.display = 'block'
     }
-    if (myFighterInfo.life > 5) {
+    if (myFighterInfo.life > LOW_LIFE_LEVEL) {
         extraLife.style.display = 'none'
     }
-
-    if (myFighterInfo.life === 1) {
-
-
+    if (myFighterInfo.life === EXTRA_LOW_LIFE_LEVEL) {
 
         fightWrapper.style.display = 'none';
         finalResult.style.display = 'flex'
-        gameOver.innerHTML = `<div class="game-over-lost-wrapper"> <br><h1 class="lost">You lost. Start the game again.</h1> <h2 class="lost">Use extra life to win</h2> <button class="start-game-btn" onclick="startGameAgain()">Start game</button></div>`
-
+        gameOver.innerHTML = `<div class="game-over-lost-wrapper">
+                              <br><h1 class="lost">You lost. Start the game again.</h1> 
+                              <h2 class="lost">Use extra life to win</h2> 
+                              <button class="start-game-btn" onclick="startGameAgain()">Start game</button>
+                              </div>`
     }
-
     myFighterResult.innerHTML = ''
     myFighterResult.innerHTML = `Fighter: Aaron.  Life: ${myFighterInfo.life}`
     setMyFighterInfo()
 }
 
-const secondMusic = () => {
-    play_single_repulsed_attack_sound()
+const attackRepulsedMusic = () => {
+    playSingleRepulsedAttackSound()
 }
 
-const thirdMusic = () => {
-    play_single_myFighter_sound()
+const damageMusic = () => {
+    playSingleMyFighterSound()
 }
 
 const getBeatenKicked = () => {
-    // const currentBossResult = bosses[currentBossIndexResult];
-    //
-    // if (currentBossResult.life !== 0) {
-    //     bosses[currentBossResult] = {
-    //         ...currentBossResult,
-    //         beaten: ++currentBossResult.beaten
-    //     }
-    // } else {
-    //     currentBossIndexResult += 1
-    // }
-    // setBossesInfo()
     finalResultFight.beaten += 1
-    console.log(finalResultFight.beaten, 'beaten')
 }
 
 const getMissedKicked = () => {
-    // const currentBossResult = bosses[currentBossIndexResult];
-    //
-    // if (currentBossResult.life !== 0) {
-    //     bosses[currentBossIndexResult] = {
-    //         ...currentBossResult,
-    //         missed: ++currentBossResult.missed
-    //     }
-    // } else {
-    //     currentBossIndexResult += 1
-    // }
-    // setBossesInfo()
     finalResultFight.missed += 1
-    console.log(finalResultFight.missed, 'missed')
 }
 
 const getInflictedKicked = () => {
-
-    // const currentBossResult = bosses[currentBossIndexResult];
-    // console.log(currentBossResult, 88888888888)
-    // if (currentBossResult.life !== 0) {
-    //     bosses[currentBossResult] = {
-    //         ...currentBossResult,
-    //         inflicted: ++currentBossResult.inflicted
-    //     }
-    // } else {
-    //     currentBossIndexResult += 1
-    // }
-    // setBossesInfo()
     finalResultFight.inflicted += 1;
-    console.log(finalResultFight.inflicted, 'inflicted')
 }
 
-//*************************************************
 const bossAttack = () => {
-    play_single_boss_sound()
-getBossInfo()
+    playSingleBossSound()
+    getBossInfo()
 
-    if(currentBossesInfo[2].life === 1  ) {
+    if (currentBossesInfo[2].life === EXTRA_LOW_LIFE_LEVEL) {
         currentFightersWrapper.style.display = 'none'
         levelWrapper.style.display = 'none'
         finalResult.style.display = 'flex'
         fightWrapper.style.display = 'none'
-       gameOver.innerHTML = `<div class="game-over-win-wrapper"><h1 class="game-over-win">Game over</h1><h2 class="win">You win</h2><h2 class="win">Now Aaron can sleep in peace.</h2></div> `
+        gameOver.innerHTML = `<div class="game-over-win-wrapper"><h1 class="game-over-win">Game over</h1><h2 class="win">You win</h2><h2 class="win">Now Aaron can sleep in peace.</h2></div> `
     }
 
     const currentBoss = bosses[currentBossIndex];
 
-    if (currentBoss.life !== 1 ) {
+    if (currentBoss.life !== EXTRA_LOW_LIFE_LEVEL) {
         bosses[currentBossIndex] = {
             ...currentBoss,
             life: --currentBoss.life
@@ -507,12 +318,6 @@ getBossInfo()
     levelWrapper.innerHTML = `Level: ${bosses[currentBossIndex].level}`
 
     setBossesInfo()
-
-    // *************************
-
-
-    // bossWrapper.addEventListener('mousedown', getConsoleDown)
-    // bossWrapper.addEventListener('mouseup', getConsoleUp)
 }
 
 const startGame = () => {
@@ -525,8 +330,6 @@ const endGame = () => {
     localStorage.clear()
     fightWrapper.style.display = 'none';
     formWrapper.style.display = 'flex'
-    // formWrapper.style.display = 'flex';
-    // startGame()
 }
 
 const getExtraLife = () => {
@@ -538,39 +341,28 @@ const getExtraLife = () => {
 exit.addEventListener('click', endGame)
 extraLife.addEventListener('click', getExtraLife)
 
-popupToggle.onclick = function () {
+popupToggle.onclick = () => {
     popup.style.display = 'block';
 };
 
-closeRules.onclick = function () {
+
+closeRules.onclick = () => {
     popup.style.display = 'none';
 }
 
-popupClose.onclick = function () {
+popupClose.onclick = () => {
     finalPopup.style.display = 'none';
-    // finalResult.style.display = 'none';
-
 }
 
-window.onclick = function (e) {
+window.onclick = (e) => {
     if (e.target === popup) {
         popup.style.display = 'none';
     }
 }
 
 const createFinalResult = () => {
-    finalPopup.style.display= 'block'
-    finalResult.style.display= 'flex'
-    // getBossInfo()
-    // currentBossesInfo.forEach(e => {
-    //
-    //     bossResultInfo.innerHTML += `<p class="boss-name">Boss name: ${e.name}</p>
-    //     <p class="strikes-repelled">Strikes repelled: ${e.beaten}</p>
-    //     <p class="missed-hits">Missed hits: ${e.missed}</p>
-    //    <p class="strikes-taken">Strikes taken: ${e.inflicted}</p>
-    //     `
-    // })
-    // currentBossesInfo.forEach(e => {
+    finalPopup.style.display = 'block'
+    finalResult.style.display = 'flex'
 
     for (let prop in finalResultFight)
         bossResultInfo.innerHTML = `<p class="boss-name">Result</p> 
@@ -578,19 +370,14 @@ const createFinalResult = () => {
         <p class="missed-hits">Missed hits: ${finalResultFight.missed}</p>
        <p class="strikes-taken">Strikes taken: ${finalResultFight.inflicted}</p>
         `
-    // })
 }
 
-
-
 const getPictureMouseDown = () => {
-    console.log('down')
     myFighter.src = ''
     myFighter.src = 'img/myFighter-second-position.svg'
 }
 
 const getPictureMouseUp = () => {
-    console.log('up')
     myFighter.src = ''
     myFighter.src = 'img/myfighte2.svg'
 }
@@ -600,10 +387,6 @@ const mouseAction = () => {
     bossWrapper.addEventListener('mouseup', getPictureMouseUp)
 }
 
-
-
 resultBtn.addEventListener('click', createFinalResult)
-
-
 
 
