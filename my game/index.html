@@ -8,6 +8,10 @@
 <body>
 
 <div class="form-wrapper">
+    <div class="fighter-name-wrapper">
+        <h2>Shadow Fight</h2>
+    </div>
+
     <form class="form">
 
         <h2 class="personal-info">Personal Details</h2>
@@ -19,10 +23,11 @@
 
         <div class="section-wrapper">
             <label for="email" class="email-label">Email</label>
-            <input id="email" name="email" type="email" placeholder="Enter your gmail address">
+            <input id="email" name="email" required type="email"  placeholder="Enter your gmail address" >
         </div>
         <div class="submit-wrapper">
             <input class="submit" type="submit" value="Send">
+            <button class="clear-btn">Clear</button>
         </div>
     </form>
 </div>
@@ -47,7 +52,7 @@
             Many years ago, people in the Tungwali settlement lived in peace and harmony, farming and other crafts. The
             tribe was ruled for many years by Chief Bari. He was a wise and just chief, and during his reign the people
             became united and began to learn new trades. The chief had two sons, the elder Duran and the younger Aaron.
-            Duran was an excellent hunter, and Aaron helped his father in everything; he spent much time with the people
+            Duran was an excellent hunter, and Aaron helped his father in everything, he spent much time with the people
             of their settlement and helped them.
         </p>
 
@@ -57,8 +62,8 @@
         </p>
 
         <p>
-            Shortly thereafter Bari died, and when he learned of his father's decision, the eldest son rebelled and
-            decided to kill his younger brother Aaron by force to take power.
+            Soon after, Bari died, and the eldest son, learning of his father's decision, revolted and decided to kill
+            his younger brother Aaron in order to seize power.
         </p>
         <button class="legend-fight-btn">Help Aaron save his life!</button>
     </div>
@@ -80,15 +85,16 @@
 
     <div id="mypopup" class='popup'>
         <div class="popup-content">
-            <div class="popup-header">
-                <h2>Rules</h2>
-<!--                **********************************************************-->
-                <div class="close-ruses-wrapper">
+            <div class="popup-header-rules">
+                <h2 class="popup-rules">Rules</h2>
+                <!--                **********************************************************-->
+                <div class="close-wrapper">
                     <span class="close-rules">&times;</span>
                 </div>
             </div>
 
             <div class="popup-body">
+
                 <p class="game-explanation">To start the game you need to click on the image of the boss, it is located
                     on the right. Each press will generate a response as to whether the attack was successful, and
                     depending on this will take the life of either the player's fighter or the boss.</p>
@@ -145,16 +151,18 @@
 </div>
 
 
-<div class="final-result">
+    <div class="final-result">
 
-    <div class="game-over"></div>
-    <button class="result-btn">Result</button>
-</div>
+        <div class="game-over"></div>
+        <button class="result-btn">Result</button>
+    </div>
+
+
 
 <div class='final-popup'>
     <div class="popup-content">
         <div class="popup-header">
-            <h2>Result</h2>
+<!--            <h2>Result</h2>-->
             <div class="close-wrapper">
                 <span class="close">&times;</span>
             </div>

@@ -7,7 +7,6 @@ body {
     font-family: sans-serif;
 }
 
-
 .popup{
     display: none;
     position: fixed;
@@ -23,7 +22,6 @@ body {
     font-family: sans-serif;
 }
 
-
 .popup h3 {
     text-align: center;
     margin: 40px 0 0 0;
@@ -33,22 +31,17 @@ body {
     background: red;
     width: 40px;
     height: 40px;
-    /*border-radius: 50%;*/
     display: flex;
     align-items: center;
     justify-content: center;
     margin-right: 20px;
+    font-size: 37px;
 }
 
-.close{
+.close .close-rules{
     color:white;
     font-size: 30px;
     font-weight: bold;
-    /*margin-left: auto;*/
-
-
-
-
 }
 
 .close:hover,
@@ -63,15 +56,22 @@ body {
     color: white;
     display: flex;
     padding: 2px 16px;
+    justify-content: right;
+    align-items: center;
+}
+
+.popup-header-rules{
+    background-color: #5c82b8;
+    color: white;
+    display: flex;
+    padding: 2px 16px;
     justify-content: space-between;
     align-items: center;
-    /*justify-content: center;*/
 }
 
 .popup-body{
     padding: 2px 16px;
 }
-
 
 .game-explanation {
     text-align: justify;
@@ -81,8 +81,6 @@ body {
 .img-rules-wrapper {
     display: flex;
     align-items: center;
-    /*justify-content: center;*/
-
 }
 
 .img-rules-wrapper img {
@@ -112,54 +110,37 @@ body {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .form-wrapper {
-      display: none;
+       /*display: none;*/
+    display: flex;
     margin: 0px;
     padding: 0;
     box-sizing: border-box;
     width: 100vw;
     height: 100vh;
-    background: url("img/video-igry-sekiro-shadows--die-twice-sek-1504827.jpg") no-repeat center top fixed;
+    background: url("img/9e2a1bd6398dbe3dc4ea1b3716d192b3.jpg") no-repeat center top fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     object-fit: cover;
-   /*display: flex;*/
     justify-content: center;
     align-items: center;
+    position: relative;
+}
+
+.fighter-name-wrapper {
+    position: absolute;
+    top: 40px;
+    font-size: 55px;
+    text-shadow: 0px 15px 5px rgba(0,0,0,0.1),
+    10px 20px 5px rgba(0,0,0,0.05),
+    -10px 20px 5px rgba(0,0,0,0.05);
 }
 
 .form {
-    width: 450px;
-    height: 300px;
+    width: 670px;
+    height: 355px;
     background: black;
     opacity: 0.8;
     margin: auto;
@@ -168,69 +149,52 @@ body {
 }
 
 .personal-info {
-    font-size: 27px;
+    font-size: 48px;
     color: white;
     text-align: center;
     margin: 34px;
-
-    /*font-family: sans-serif;*/
+    text-shadow: 6px 6px 0px rgba(0,0,0,0.2)
 }
 
 .section-wrapper {
     justify-content: space-between;
-    width: 330px;
+    width: 586px;
     margin: 20px auto;
-
-
 }
 
 .name-label {
-    font-size: 20px;
+    font-size: 30px;
     margin-right: 10px;
     color: white;
 }
 
-
 .email-label {
-    font-size: 20px;
+    font-size: 30px;
     margin-right: 14px;
     color: white;
-
 }
 
 input {
-    width: 250px;
-    height: 30px;
+    width: 390px;
+    height: 40px;
     background: black;
     color: white;
-    font-size: 17px;
+    font-size: 20px;
     text-align: center;
 }
 
 .submit-wrapper {
-    width: 450px;
+    width: 398px;
+    margin:30px auto 0;
+    justify-content: space-around;
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 
 .submit {
-    height: 40px;
-    width: 150px;
-    background: green;
-    border-radius: 5px;
-    /*    margin: auto;*/
-    /*    text-align: center;*/
-    /*    justify-content: center;*/
-
-
-}
-
-
-/* CSS */
-.submit {
-    background-color: #7a1527;
-    /*background-color: #1b942f;*/
+    height: 50px;
+    width: 157px;
+    background-color: green;
     background-image: none;
     border: 1px solid #000;
     border-radius: 4px;
@@ -240,7 +204,7 @@ input {
     cursor: pointer;
     display: inline-block;
     font-family: ITCAvantGardeStd-Bk, Arial, sans-serif;
-    font-size: 14px;
+    font-size: 25px;
     font-weight: 400;
     line-height: 20px;
     margin: 0 5px 10px 0;
@@ -273,6 +237,51 @@ input {
     transform: translate(2px, 2px);
 }
 
+.clear-btn  {
+    height: 50px;
+    width: 157px;
+    background-color: #ff2929;;
+    border: 1px solid #000;
+    border-radius: 4px;
+    box-shadow: #fff 4px 4px 0 0, #000 4px 4px 0 1px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: ITCAvantGardeStd-Bk, Arial, sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 20px;
+    margin: 0 5px 10px 0;
+    overflow: visible;
+    padding: 12px 40px;
+    text-align: center;
+    text-transform: none;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.clear-btn:focus {
+    text-decoration: none;
+}
+
+.button-50:hover {
+    text-decoration: none;
+}
+
+.clear-btn:active {
+    box-shadow: rgba(0, 0, 0, .125) 0 3px 5px inset;
+    outline: 0;
+}
+
+.clear-btn:not([disabled]):active {
+    box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
+    transform: translate(2px, 2px);
+}
+
 .start-game-wrapper{
     display: none;
     background-image: url("img/legend-first.jpg");
@@ -293,7 +302,6 @@ input {
     width: 600px;
     height: 250px;
     background: lightgray;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -339,7 +347,6 @@ input {
     font-weight: bold;
     box-sizing: border-box;
     margin: 10px;
-
 }
 
 .legend-wrapper {
@@ -361,18 +368,13 @@ input {
     font-family: Snell Roundhand, cursive ;
     color: white;
     font-size: 30px;
-    /*margin: 0;*/
     padding: 10px;
     width: 900px;
-
     background: black;
     opacity: 0.5;
     border: none;
     border-radius: 10px;
     text-align: center;
-    /*font-weight: bold;*/
-    /*animation: ani 2.5s forwards;*/
-    /*transition: 0.55s opacity, 0.55s visibility;*/
 }
 
 .legend-fight-btn {
@@ -386,21 +388,11 @@ input {
     opacity: 0.8;
     font-family: Snell Roundhand, cursive ;
     margin-left: 310px
-
 }
 
-
-
-
 .fight-wrapper{
-  /*display: none;*/
-    display: block;
-
-    /*display: flex;*/
-    /*background: green;*/
-    /*margin: 0px;*/
-    /*padding: 0;*/
-    /*box-sizing: border-box;*/
+    /*display: block;*/
+    display: none;
     width: 100vw;
     height: 100vh;
     background: url("img/1641130260_1-abrakadabra-fun-p-derevnya-fon-gacha-1.jpg") no-repeat center top fixed;
@@ -409,7 +401,6 @@ input {
     -o-background-size: cover;
     background-size: cover;
     object-fit: cover;
-    /*display: flex;*/
     justify-content: center;
     align-items: center;
 }
@@ -420,7 +411,6 @@ input {
 }
 
 .rules-exit-img-wrapper{
-    /*width: 150px;*/
     display: flex;
     width: 25%;
 }
@@ -431,6 +421,10 @@ input {
 
 .rules{
     margin: 20px 10px;
+}
+
+.popup-rules {
+    text-align: center;
 }
 
 .level-wrapper{
@@ -454,16 +448,14 @@ input {
 
 .fightersMainWrapper{
     display: flex;
-    /*margin: auto;*/
     justify-content: center;
     margin-top: 73px;
-    /*margin-left: -227px*/
 }
 .fighter-main-wrapper {
-    /*display: flex;*/
     justify-content: center;
     align-items: center;
     padding: 0;
+    position: relative;
 }
 
 .my-fighter-img{
@@ -486,10 +478,8 @@ input {
     display: flex;
     align-items: center;
     justify-content: center;
-    /*margin: 0;*/
     opacity: 0.7;
     border-radius: 10px;
-
 }
 
 .info-wrapper {
@@ -501,14 +491,12 @@ input {
     justify-content: center;
     opacity: 0.7;
     border-radius: 10px;
-    /*margin: 0;*/
 }
 
 .myFighterResult{
     font-size: 30px;
     color: white;
     font-weight: bold;
-
     border-radius: 5px;
 }
 
@@ -536,6 +524,9 @@ input {
 
 .extraLife{
     display: none;
+    position: absolute;
+    top: 0;
+    left: -69px;
 }
 
 .result-action-wrapper{
@@ -551,7 +542,6 @@ input {
     color: white;
     height: 85px;
     width: 600px;
-    /*background: #7a1527;*/
     text-align: center;
     font-family: sans-serif;
     display: flex;
@@ -560,10 +550,7 @@ input {
     border-radius: 10px;
 }
 
-
-
 .final-popup{
-    /*display: block;*/
     display: none;
     position: fixed;
     z-index: 1;
@@ -577,76 +564,120 @@ input {
     font-size: 22px;
     font-family: sans-serif;
     box-sizing: border-box;
-
 }
 
 .boss-result-info {
-    /*margin: 10px 10px 20px 10px;*/
     font-size: 27px;
     padding:  0 30px;
     box-sizing: border-box;
-    /*display: flex;*/
-
 }
 
 .boss-name {
     color: #7a1527;
     display: flex;
     font-size: 30px;
-    /*text-align: center;*/
     justify-content: center;
 }
 
 .strikes-repelled{
-    /*color: orange;*/
     width: 100%;
     height: 50px;
     background: lightgray;
     font-family: sans-serif;
-    /*display: flex;*/
-    /*text-align: center;*/
-    /*justify-content: center;*/
     padding-top: 8px;
     padding-left: 20px;
     box-sizing: border-box;
-
 }
-
-
 
 .missed-hits{
     width: 100%;
     height: 50px;
     background: lightgray;
     font-family: sans-serif;
-    /*display: flex;*/
-    /*text-align: center;*/
-    /*justify-content: center;*/
     padding-top: 8px;
     padding-left: 20px;
     box-sizing: border-box;
 }
+
 .strikes-taken {
     width: 100%;
     height: 50px;
     background: lightgray;
     font-family: sans-serif;
-    /*display: flex;*/
-    /*text-align: center;*/
-    /*justify-content: center;*/
     padding-top: 8px;
     padding-left: 20px;
     box-sizing: border-box;
 }
 
-.boss-result-number {
-    /*font-weight: bold;*/
-}
-
-
 .final-result{
     display: none;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("img/1641130260_1-abrakadabra-fun-p-derevnya-fon-gacha-1.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    object-fit: cover;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+    flex-wrap: wrap;
 }
+
+.game-over-win-wrapper {
+    color: white;
+    font-size: 28px;
+    width: 553px;
+    height: 265px;
+    background: #44a64b;
+    opacity: 0.9;
+    margin-top: -316px;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+    0px 8px 13px rgba(0,0,0,0.1),
+    0px 18px 23px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+.win {
+    color: white;
+    font-size: 35px;
+    margin: 7px;
+}
+
+.result-btn{
+    width: 150px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 24px;
+    background: #5c82b8;
+    position: absolute;
+    top : 475px
+}
+
+.game-over-lost-wrapper {
+    color: white;
+    font-size: 28px;
+    width: 553px;
+    height: 265px;
+    background: #df1d1d;
+    opacity: 0.9;
+    margin-top: -316px;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+    0px 8px 13px rgba(0,0,0,0.1),
+    0px 18px 23px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+.lost {
+    color: white;
+    font-size: 35px;
+    margin: 7px;
+}
+
 
 
 

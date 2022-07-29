@@ -44,7 +44,7 @@ const myFighterInfo = {
 
 const bosses = [
     {
-        name: 'Stick Man',
+        name: 'Bostor',
         life: 5,
         image: "img/boss3.svg",
         level: 1,
@@ -53,9 +53,9 @@ const bosses = [
         inflicted: 0
 
     }, {
-        name: 'Nindja Man',
+        name: 'Selevan',
         life: 7,
-        image: "img/21039920061621418911.svg",
+        image: "img/secondBoss.svg",
         level: 2,
         beaten: 0,
         missed: 0,
@@ -64,16 +64,22 @@ const bosses = [
 
 
     {
-        name: 'Nindja Man',
+        name: 'Duran',
         life: 10,
-        image: "img/boss3.svg",
+        image: "img/thirdBoss.svg",
         level: 3,
         beaten: 0,
         missed: 0,
         inflicted: 0
 
-    }
+    },
 ]
+
+const  finalResultFight = {
+    beaten: 0,
+    missed:0,
+    inflicted: 0,
+}
 
 let currentBossIndex = 0;
 let currentBossIndexResult = 0;
@@ -103,6 +109,7 @@ const getBossInfo = () => {
     console.log(currentBossesInfo, 'currentBossesInfo')
     // myFighterResult.innerHTML = currentMyFighterInfo.life
     // return currentBossesInfo
+
 
 }
 
@@ -175,24 +182,30 @@ const openFighterPage = () => {
     legendWrapper.style.display = 'none';
     startGameWrapper.style.display = 'none';
     fightWrapper.style.display = 'block';
-    // *********************************
+
 // setLocalStorage()
-    // ************************************************
+
     // endGame()
     // setMyFighterInfo()
     // setBossesInfo()
     // console.log(5)
 
 }
+// ****************************************************************
+const startGameAgain = () => {
+    // localStorage.clear()
+    // // setBossesInfo()
+    // setLocalStorage()
+    // setMyFighterInfo()
 
-// const startGameAgain = () => {
-//     localStorage.clear()
-//     // setBossesInfo()
-//     setLocalStorage()
-//     // setMyFighterInfo()
-//     finalResult.style.display = 'none'
-//     fightWrapper.style.display = 'block';
-// }
+    location.href=location.href;
+
+    console.log(8888888888888888)
+
+
+    finalResult.style.display = 'none'
+    fightWrapper.style.display = 'block';
+}
 
 
 legendGameBtn.addEventListener('click', watchLegend)
@@ -248,6 +261,11 @@ function getFormElement(event) {
     }
 }
 
+// const clearInput = () => {
+//     name.value = ''
+//     email.value = ''
+// }
+
 submit.addEventListener('click', getFormElement)
 
 
@@ -280,6 +298,7 @@ const getResultAttack = (value) => {
             resultAction.style.background = 'orange'
             secondMusic()
             getBeatenKicked()
+            mouseAction()
             break;
         case 1 :
             resultAction.innerHTML = ''
@@ -287,6 +306,7 @@ const getResultAttack = (value) => {
             resultAction.style.background = 'green'
             getMissedKicked()
             bossAttack()
+          mouseAction()
             break;
         case 2 :
             resultAction.innerHTML = ''
@@ -295,6 +315,7 @@ const getResultAttack = (value) => {
             thirdMusic()
             getMyFighterWound()
             getInflictedKicked()
+           mouseAction()
             break;
     }
 }
@@ -310,15 +331,15 @@ const getMyFighterWound = () => {
         extraLife.style.display = 'none'
     }
 
-    // if (myFighterInfo.life === 1) {
-    //
-    //     // ***************************************************************
-    //
-    //     fightWrapper.style.display = 'none';
-    //     finalResult.style.display = 'block'
-    //     gameOver.innerHTML = `<h1>You lost. Start the game again.</h1>  <button class="start-game-btn" onclick="startGameAgain()">Start game</button>`
-    //
-    // }
+    if (myFighterInfo.life === 1) {
+
+
+
+        fightWrapper.style.display = 'none';
+        finalResult.style.display = 'flex'
+        gameOver.innerHTML = `<div class="game-over-lost-wrapper"> <br><h1 class="lost">You lost. Start the game again.</h1> <h2 class="lost">Use extra life to win</h2> <button class="start-game-btn" onclick="startGameAgain()">Start game</button></div>`
+
+    }
 
     myFighterResult.innerHTML = ''
     myFighterResult.innerHTML = `Fighter: Aaron.  Life: ${myFighterInfo.life}`
@@ -334,45 +355,52 @@ const thirdMusic = () => {
 }
 
 const getBeatenKicked = () => {
-    const currentBossResult = bosses[currentBossIndexResult];
-
-    if (currentBossResult.life !== 0) {
-        bosses[currentBossResult] = {
-            ...currentBossResult,
-            beaten: ++currentBossResult.beaten
-        }
-    } else {
-        currentBossIndexResult += 1
-    }
-    setBossesInfo()
+    // const currentBossResult = bosses[currentBossIndexResult];
+    //
+    // if (currentBossResult.life !== 0) {
+    //     bosses[currentBossResult] = {
+    //         ...currentBossResult,
+    //         beaten: ++currentBossResult.beaten
+    //     }
+    // } else {
+    //     currentBossIndexResult += 1
+    // }
+    // setBossesInfo()
+    finalResultFight.beaten += 1
+    console.log(finalResultFight.beaten, 'beaten')
 }
 
 const getMissedKicked = () => {
-    const currentBossResult = bosses[currentBossIndexResult];
-
-    if (currentBossResult.life !== 0) {
-        bosses[currentBossIndexResult] = {
-            ...currentBossResult,
-            missed: ++currentBossResult.missed
-        }
-    } else {
-        currentBossIndexResult += 1
-    }
-    setBossesInfo()
+    // const currentBossResult = bosses[currentBossIndexResult];
+    //
+    // if (currentBossResult.life !== 0) {
+    //     bosses[currentBossIndexResult] = {
+    //         ...currentBossResult,
+    //         missed: ++currentBossResult.missed
+    //     }
+    // } else {
+    //     currentBossIndexResult += 1
+    // }
+    // setBossesInfo()
+    finalResultFight.missed += 1
+    console.log(finalResultFight.missed, 'missed')
 }
 
 const getInflictedKicked = () => {
-    const currentBossResult = bosses[currentBossIndexResult];
 
-    if (currentBossResult.life !== 0) {
-        bosses[currentBossResult] = {
-            ...currentBossResult,
-            inflicted: ++currentBossResult.inflicted
-        }
-    } else {
-        currentBossIndexResult += 1
-    }
-    setBossesInfo()
+    // const currentBossResult = bosses[currentBossIndexResult];
+    // console.log(currentBossResult, 88888888888)
+    // if (currentBossResult.life !== 0) {
+    //     bosses[currentBossResult] = {
+    //         ...currentBossResult,
+    //         inflicted: ++currentBossResult.inflicted
+    //     }
+    // } else {
+    //     currentBossIndexResult += 1
+    // }
+    // setBossesInfo()
+    finalResultFight.inflicted += 1;
+    console.log(finalResultFight.inflicted, 'inflicted')
 }
 
 //*************************************************
@@ -383,9 +411,9 @@ getBossInfo()
     if(currentBossesInfo[2].life === 1  ) {
         currentFightersWrapper.style.display = 'none'
         levelWrapper.style.display = 'none'
-        finalResult.style.display = 'block'
+        finalResult.style.display = 'flex'
         fightWrapper.style.display = 'none'
-       gameOver.innerHTML = `<h1>Game over</h1> `
+       gameOver.innerHTML = `<div class="game-over-win-wrapper"><h1 class="game-over-win">Game over</h1><h2 class="win">You win</h2><h2 class="win">Now Aaron can sleep in peace.</h2></div> `
     }
 
     const currentBoss = bosses[currentBossIndex];
@@ -404,6 +432,12 @@ getBossInfo()
     levelWrapper.innerHTML = `Level: ${bosses[currentBossIndex].level}`
 
     setBossesInfo()
+
+    // *************************
+
+
+    // bossWrapper.addEventListener('mousedown', getConsoleDown)
+    // bossWrapper.addEventListener('mouseup', getConsoleUp)
 }
 
 const startGame = () => {
@@ -415,8 +449,9 @@ startGame()
 const endGame = () => {
     localStorage.clear()
     fightWrapper.style.display = 'none';
-    formWrapper.style.display = 'block';
-    startGame()
+    formWrapper.style.display = 'flex'
+    // formWrapper.style.display = 'flex';
+    // startGame()
 }
 
 const getExtraLife = () => {
@@ -450,16 +485,44 @@ window.onclick = function (e) {
 
 const createFinalResult = () => {
     finalPopup.style.display= 'block'
-    finalResult.style.display= 'block'
-    getBossInfo()
-    currentBossesInfo.forEach(e => {
+    finalResult.style.display= 'flex'
+    // getBossInfo()
+    // currentBossesInfo.forEach(e => {
+    //
+    //     bossResultInfo.innerHTML += `<p class="boss-name">Boss name: ${e.name}</p>
+    //     <p class="strikes-repelled">Strikes repelled: ${e.beaten}</p>
+    //     <p class="missed-hits">Missed hits: ${e.missed}</p>
+    //    <p class="strikes-taken">Strikes taken: ${e.inflicted}</p>
+    //     `
+    // })
+    // currentBossesInfo.forEach(e => {
 
-        bossResultInfo.innerHTML += `<p class="boss-name">Boss name: ${e.name}</p> 
-        <p class="strikes-repelled">Strikes repelled: ${e.beaten}</p>
-        <p class="missed-hits">Missed hits: ${e.missed}</p>
-       <p class="strikes-taken">Strikes taken: ${e.inflicted}</p>
+    for (let prop in finalResultFight)
+        bossResultInfo.innerHTML = `<p class="boss-name">Result</p> 
+        <p class="strikes-repelled">Strikes repelled: ${finalResultFight.beaten}</p>
+        <p class="missed-hits">Missed hits: ${finalResultFight.missed}</p>
+       <p class="strikes-taken">Strikes taken: ${finalResultFight.inflicted}</p>
         `
-    })
+    // })
+}
+
+
+
+const getPictureMouseDown = () => {
+    console.log('down')
+    myFighter.src = ''
+    myFighter.src = 'img/myFighter-second-position.svg'
+}
+
+const getPictureMouseUp = () => {
+    console.log('up')
+    myFighter.src = ''
+    myFighter.src = 'img/myfighte2.svg'
+}
+
+const mouseAction = () => {
+    bossWrapper.addEventListener('mousedown', getPictureMouseDown)
+    bossWrapper.addEventListener('mouseup', getPictureMouseUp)
 }
 
 
