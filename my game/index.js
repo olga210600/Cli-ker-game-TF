@@ -1,3 +1,6 @@
+
+// If not working properly, clean localStorage
+
 const form                   = document.querySelector('.form');
 const nameUser               = document.querySelector('#name');
 const emailUser              = document.querySelector('#email');
