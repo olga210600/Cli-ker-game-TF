@@ -77,21 +77,21 @@ const finalResultFight = {
 const setUserName = (element) => localStorage.setItem('player', JSON.stringify(element));
 
 const getPlayerInfo = () => {
-    let player  = localStorage.getItem('player');
-    parsePlayer = JSON.parse(player);
+    const player = localStorage.getItem('player');
+    parsePlayer  = JSON.parse(player);
 }
 
 const setBossesInfo = () => localStorage.setItem('bosses', JSON.stringify(bosses));
 
 const getBossInfo = () => {
-    let bosses        = localStorage.getItem('bosses');
+    const bosses      = localStorage.getItem('bosses');
     currentBossesInfo = JSON.parse(bosses);
 }
 
 const setMyFighterInfo = () => localStorage.setItem('myFighter', JSON.stringify(myFighterInfo));
 
 const getMyFighterInfo = () => {
-    let fighter          = localStorage.getItem('myFighter');
+    const fighter        = localStorage.getItem('myFighter');
     currentMyFighterInfo = JSON.parse(fighter);
 }
 
@@ -111,7 +111,7 @@ const firstPage = () => {
 firstPage();
 
 const validateEmail = (email) => {
-    let emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return emailPattern.test(email);
 };
 
