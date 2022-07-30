@@ -13,7 +13,6 @@
     </div>
 
     <form class="form">
-
         <h2 class="personal-info">Personal Details</h2>
 
         <div class="section-wrapper">
@@ -25,6 +24,7 @@
             <label for="email" class="email-label">Email</label>
             <input id="email" name="email" type="email" required placeholder="Enter your gmail address">
         </div>
+
         <div class="submit-wrapper">
             <input class="submit" type="submit" value="Send">
             <button class="clear-btn">Clear</button>
@@ -44,7 +44,6 @@
         </div>
     </div>
 </div>
-
 
 <div class="legend-wrapper">
     <div class="legend-story">
@@ -87,29 +86,32 @@
         <div class="popup-content">
             <div class="popup-header-rules">
                 <h2 class="popup-rules">Rules</h2>
-                <!--                **********************************************************-->
+
                 <div class="close-wrapper">
                     <span class="close-rules">&times;</span>
                 </div>
             </div>
 
             <div class="popup-body">
-
                 <p class="game-explanation">To start the game you need to click on the image of the boss, it is located
                     on the right. Each press will generate a response as to whether the attack was successful, and
-                    depending on this will take the life of either the player's fighter or the boss.</p>
+                    depending on this will take the life of either the player's fighter or the boss.
+                </p>
+
                 <h3>Navigation</h3>
+
                 <div class="img-rules-wrapper">
-                    <img src="img/exit-svgrepo-com.svg">
+                    <img src="img/exit-svgrepo-com.svg" alt="exit" title="exit" >
                     <p>Will exit the game and return to the registration page.</p>
                 </div>
+
                 <div class="img-rules-wrapper">
-                    <img src="img/health-care-svgrepo-com.svg">
+                    <img src="img/health-care-svgrepo-com.svg" alt="extra live" title="extra live">
                     <p>This button appears if the player has 10 lives left, clicking on it will add 10 lives to the
-                        total.</p>
+                        total.
+                    </p>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -126,7 +128,7 @@
             <div class="fightersMainWrapper">
                 <div class="fighter-main-wrapper">
                     <div class="info-wrapper">
-                        <div class="myFighterResult">Fighter: Aaron. Life: 20.</div>
+                        <div class="myFighterResult">Fighter: Aaron. Life: 10.</div>
                     </div>
 
                     <div class="extra-life-btn-wrapper">
@@ -135,7 +137,7 @@
                     </div>
 
                     <div class="my-fighter-img">
-                        <img class="myFighter" src="img/myfighte2.svg"/>
+                        <img class="myFighter" src="img/myfighte2.svg" alt="myFighter"/>
                     </div>
                 </div>
 
@@ -145,18 +147,17 @@
             </div>
         </div>
     </div>
-
-
 </div>
+
 <div class="final-result">
     <div class="rules-exit-img-wrapper-result">
         <img class="exit-final" src="img/exit-svgrepo-com.svg" alt="Exit" title="Exit">
     </div>
 
     <div class="game-over"></div>
-    <img class="result-btn" src="img/clipboard-document-result-svgrepo-com.svg"/>
-</div>
 
+    <img class="result-btn" src="img/clipboard-document-result-svgrepo-com.svg" alt="result" title="result"/>
+</div>
 
 <div id="mypopupResult" class='final-popup'>
     <div class="popup-content">
@@ -171,8 +172,6 @@
         </div>
     </div>
 </div>
-<!--</div>-->
-
 
 <script src="index.js"></script>
 
