@@ -37,61 +37,61 @@ const resultBtn              = document.querySelector('.result-btn');
 const finalPopup             = document.querySelector('.final-popup');
 
 let values;
-let currentBossIndex = 0;
 let parsePlayer;
 let currentBossesInfo;
 let currentMyFighterInfo;
-const LOW_LIFE_LEVEL = 5;
+let currentBossIndex       = 0;
+const LOW_LIFE_LEVEL       = 5;
 const EXTRA_LOW_LIFE_LEVEL = 1;
 
 const myFighterInfo = {
-    life: 10,
-    newGame: false
+    life    : 10,
+    newGame : false
 }
 
 const bosses = [
     {
-        name: 'Bostor',
-        life: 5,
-        image: "img/boss3.svg",
-        level: 1,
+        name  : 'Bostor',
+        life  : 5,
+        image : "img/boss3.svg",
+        level : 1,
     }, {
-        name: 'Selevan',
-        life: 7,
-        image: "img/secondBoss.svg",
-        level: 2,
+        name  : 'Selevan',
+        life  : 7,
+        image : "img/secondBoss.svg",
+        level : 2,
     }, {
-        name: 'Duran',
-        life: 10,
-        image: "img/thirdBoss.svg",
-        level: 3,
+        name  : 'Duran',
+        life  : 10,
+        image : "img/thirdBoss.svg",
+        level : 3,
     },
 ]
 
 const finalResultFight = {
-    beaten: 0,
-    missed: 0,
-    inflicted: 0,
+    beaten    : 0,
+    missed    : 0,
+    inflicted : 0,
 }
 
 const setUserName = (element) => localStorage.setItem('player', JSON.stringify(element));
 
 const getPlayerInfo = () => {
-    let player = localStorage.getItem('player');
+    let player  = localStorage.getItem('player');
     parsePlayer = JSON.parse(player);
 }
 
 const setBossesInfo = () => localStorage.setItem('bosses', JSON.stringify(bosses));
 
 const getBossInfo = () => {
-    let bosses = localStorage.getItem('bosses');
+    let bosses        = localStorage.getItem('bosses');
     currentBossesInfo = JSON.parse(bosses);
 }
 
 const setMyFighterInfo = () => localStorage.setItem('myFighter', JSON.stringify(myFighterInfo));
 
 const getMyFighterInfo = () => {
-    let fighter = localStorage.getItem('myFighter');
+    let fighter          = localStorage.getItem('myFighter');
     currentMyFighterInfo = JSON.parse(fighter);
 }
 
@@ -102,9 +102,9 @@ const firstPage = () => {
 
     if (localStorage.getItem('player') !== null) {
         fightWrapper.style.display = 'block';
-        formWrapper.style.display = 'none';
+        formWrapper.style.display  = 'none';
     } else {
-        formWrapper.style.display = 'flex';
+        formWrapper.style.display  = 'flex';
     }
 }
 
@@ -122,35 +122,29 @@ const getUserNameForGreeting = () => {
 
 const watchLegend = () => {
     startGameWrapper.style.display = 'none';
-    legendWrapper.style.display = 'flex';
+    legendWrapper.style.display    = 'flex';
 }
 
 const openFighterPage = () => {
-    legendWrapper.style.display = 'none';
+    legendWrapper.style.display    = 'none';
     startGameWrapper.style.display = 'none';
-    fightWrapper.style.display = 'block';
-    formWrapper.style.display = 'none';
+    fightWrapper.style.display     = 'block';
+    formWrapper.style.display      = 'none';
 }
 
 const startGameAgain = () => {
     location.reload();
-    myFighterInfo.newGame = true;
+    myFighterInfo.newGame      = true;
     setMyFighterInfo();
     fightWrapper.style.display = 'block';
-    finalResult.style.display = 'none';
+    finalResult.style.display  = 'none';
 }
 
-function playSingleBossSound() {
-    audioTag1.play();
-}
+const playSingleBossSound = () => audioTag1.play();
 
-function playSingleRepulsedAttackSound() {
-    audioTag2.play();
-}
+const playSingleRepulsedAttackSound = () => audioTag2.play();
 
-function playSingleMyFighterSound() {
-    audioTag3.play();
-}
+const playSingleMyFighterSound = () => audioTag3.play();
 
 function getFormElement(event) {
     event.preventDefault();
@@ -159,17 +153,17 @@ function getFormElement(event) {
     const email = form.querySelector("[name = 'email']");
 
     values = {
-        name: name.value,
-        email: email.value,
+        name  : name.value,
+        email : email.value,
     }
 
     if (name.value.length > 0 && email.value.length > 0) {
         if (validateEmail(email.value)) {
             setUserName(values);
-            nameUser.value = '';
+            nameUser.value  = '';
             emailUser.value = '';
 
-            formWrapper.style.display = 'none';
+            formWrapper.style.display      = 'none';
             startGameWrapper.style.display = 'flex';
 
             myFighterInfo.newGame = false;
@@ -189,7 +183,7 @@ function getFormElement(event) {
 const clearForm = (event) => {
     event.preventDefault();
 
-    nameUser.value = '';
+    nameUser.value  = '';
     emailUser.value = '';
 }
 
@@ -241,7 +235,6 @@ const getResultAttack = (value) => {
     }
 }
 
-
 const getMyFighterWound = () => {
     --myFighterInfo.life;
 
@@ -254,7 +247,7 @@ const getMyFighterWound = () => {
     if (myFighterInfo.life === EXTRA_LOW_LIFE_LEVEL) {
 
         fightWrapper.style.display = 'none';
-        finalResult.style.display = 'flex';
+        finalResult.style.display  = 'flex';
         gameOver.innerHTML = `<div class="game-over-lost-wrapper">
                               <br><h1 class="lost">You lost. Start the game again.</h1> 
                               <h2 class="lost">Use extra life to win</h2> 
@@ -266,35 +259,26 @@ const getMyFighterWound = () => {
     setMyFighterInfo();
 }
 
-const attackRepulsedMusic = () => {
-    playSingleRepulsedAttackSound();
-}
+const attackRepulsedMusic = () => playSingleRepulsedAttackSound();
 
-const damageMusic = () => {
-    playSingleMyFighterSound();
-}
+const damageMusic = () => playSingleMyFighterSound();
 
-const getBeatenKicked = () => {
-    finalResultFight.beaten += 1;
-}
+const getBeatenKicked = () => finalResultFight.beaten += 1;
 
-const getMissedKicked = () => {
-    finalResultFight.missed += 1;
-}
+const getMissedKicked = () => finalResultFight.missed += 1;
 
-const getInflictedKicked = () => {
-    finalResultFight.inflicted += 1;
-}
+const getInflictedKicked = () => finalResultFight.inflicted += 1;
 
 const bossAttack = () => {
     playSingleBossSound();
+    setBossesInfo()
     getBossInfo();
 
     if (currentBossesInfo[2].life === EXTRA_LOW_LIFE_LEVEL) {
         currentFightersWrapper.style.display = 'none';
-        levelWrapper.style.display = 'none';
-        finalResult.style.display = 'flex';
-        fightWrapper.style.display = 'none';
+        levelWrapper.style.display           = 'none';
+        finalResult.style.display            = 'flex';
+        fightWrapper.style.display           = 'none';
         gameOver.innerHTML = `<div class="game-over-win-wrapper">
                                  <h1 class="game-over-win">Game over</h1>
                                  <h2 class="win">You win</h2>
@@ -314,7 +298,7 @@ const bossAttack = () => {
         currentBossIndex += 1;
     }
 
-    bossWrapper.innerHTML = createBoss(bosses[currentBossIndex]);
+    bossWrapper.innerHTML  = createBoss(bosses[currentBossIndex]);
     levelWrapper.innerHTML = '';
     levelWrapper.innerHTML = `Level: ${bosses[currentBossIndex].level}`;
 
@@ -331,8 +315,8 @@ const endGame = () => {
     localStorage.clear();
     location.reload();
     fightWrapper.style.display = 'none';
-    formWrapper.style.display = 'flex';
-    finalResult.style.display = 'none';
+    formWrapper.style.display  = 'flex';
+    finalResult.style.display  = 'none';
 }
 
 const getExtraLife = () => {
@@ -341,17 +325,11 @@ const getExtraLife = () => {
     setMyFighterInfo();
 }
 
-popupToggle.onclick = () => {
-    popup.style.display = 'block';
-};
+popupToggle.onclick = () => popup.style.display = 'block';
 
-closeRules.onclick = () => {
-    popup.style.display = 'none';
-}
+closeRules.onclick = () => popup.style.display = 'none';
 
-popupClose.onclick = () => {
-    finalPopup.style.display = 'none';
-}
+popupClose.onclick = () => finalPopup.style.display = 'none';
 
 window.onclick = (e) => {
     if (e.target === popup) {
@@ -366,7 +344,7 @@ window.onclick = (e) => {
 }
 
 const createFinalResult = () => {
-    finalPopup.style.display = 'block';
+    finalPopup.style.display  = 'block';
     finalResult.style.display = 'flex';
 
     for (let prop in finalResultFight)

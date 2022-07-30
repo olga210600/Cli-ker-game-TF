@@ -458,6 +458,7 @@ input {
     align-items     : center;
     padding         : 0;
     position        : relative;
+    height: 500px;
 }
 
 .my-fighter-img {
