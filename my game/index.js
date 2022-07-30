@@ -7,6 +7,7 @@ const fightWrapper = document.querySelector('.fight-wrapper')
 const formWrapper = document.querySelector('.form-wrapper')
 const myFighter = document.querySelector('.myFighter')
 const exit = document.querySelector('.exit')
+const exitFinal = document.querySelector('.exit-final')
 const bossWrapper = document.querySelector('.bossWrapper')
 const audioTag1 = document.querySelector('.audioTag1')
 const audioTag2 = document.querySelector('.audioTag2')
@@ -21,8 +22,10 @@ const legendWrapper = document.querySelector('.legend-wrapper')
 const startGameBtn = document.querySelector('.start-game-btn')
 const legendFightBtn = document.querySelector('.legend-fight-btn')
 const levelWrapper = document.querySelector('.level')
-const popup = document.getElementById('mypopup');
+const popup = document.getElementById('mypopupRules');
+// const popup = document.querySelector('.popup');
 const popupToggle = document.getElementById('myBtn');
+const popupToggleResult = document.getElementById('mypopupResult');
 const popupClose = document.querySelector('.close');
 const closeRules = document.querySelector('.close-rules')
 const bossResultInfo = document.querySelector('.boss-result-info')
@@ -299,7 +302,12 @@ const bossAttack = () => {
         levelWrapper.style.display = 'none'
         finalResult.style.display = 'flex'
         fightWrapper.style.display = 'none'
-        gameOver.innerHTML = `<div class="game-over-win-wrapper"><h1 class="game-over-win">Game over</h1><h2 class="win">You win</h2><h2 class="win">Now Aaron can sleep in peace.</h2></div> `
+        gameOver.innerHTML = `<div class="game-over-win-wrapper">
+                                 <h1 class="game-over-win">Game over</h1>
+                                 <h2 class="win">You win</h2>
+                                 <h2 class="win">Now Aaron can sleep in peace.</h2>
+                                  <button class="start-game-btn" onclick="startGameAgain()">Start game</button>
+                              </div>`
     }
 
     const currentBoss = bosses[currentBossIndex];
@@ -328,8 +336,10 @@ startGame()
 
 const endGame = () => {
     localStorage.clear()
+    location.reload()
     fightWrapper.style.display = 'none';
     formWrapper.style.display = 'flex'
+    finalResult.style.display = 'none'
 }
 
 const getExtraLife = () => {
@@ -339,11 +349,16 @@ const getExtraLife = () => {
 }
 
 exit.addEventListener('click', endGame)
+exitFinal.addEventListener('click', endGame)
 extraLife.addEventListener('click', getExtraLife)
 
-popupToggle.onclick = () => {
+popupToggle.onclick = () =>  {
     popup.style.display = 'block';
 };
+
+// popupToggleResult.onclick = () =>  {
+//     popup.style.display = 'block';
+// };
 
 
 closeRules.onclick = () => {
@@ -357,6 +372,14 @@ popupClose.onclick = () => {
 window.onclick = (e) => {
     if (e.target === popup) {
         popup.style.display = 'none';
+        console.log(8)
+    }
+}
+
+window.onclick = (e) => {
+    if (e.target === finalPopup) {
+        finalPopup.style.display = 'none';
+        console.log(7)
     }
 }
 
@@ -365,7 +388,7 @@ const createFinalResult = () => {
     finalResult.style.display = 'flex'
 
     for (let prop in finalResultFight)
-        bossResultInfo.innerHTML = `<p class="boss-name">Result</p> 
+        bossResultInfo.innerHTML = `<p class="final-rules-name">Result</p> 
         <p class="strikes-repelled">Strikes repelled: ${finalResultFight.beaten}</p>
         <p class="missed-hits">Missed hits: ${finalResultFight.missed}</p>
        <p class="strikes-taken">Strikes taken: ${finalResultFight.inflicted}</p>
@@ -373,11 +396,13 @@ const createFinalResult = () => {
 }
 
 const getPictureMouseDown = () => {
+    console.log(5)
     myFighter.src = ''
     myFighter.src = 'img/myFighter-second-position.svg'
 }
 
 const getPictureMouseUp = () => {
+    console.log(6)
     myFighter.src = ''
     myFighter.src = 'img/myfighte2.svg'
 }

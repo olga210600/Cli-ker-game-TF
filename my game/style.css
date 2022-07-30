@@ -20,6 +20,7 @@ body {
     background-color: rgba(0, 0, 0, 0.4);
     font-size: 22px;
     font-family: sans-serif;
+    padding-top: 70px;
 }
 
 .popup h3 {
@@ -34,7 +35,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 20px;
+    /*margin-right: 20px;*/
     font-size: 37px;
 }
 
@@ -45,7 +46,15 @@ body {
 }
 
 .close:hover,
-.close:focus{
+.close:focus
+{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.close-rules:hover,
+.close-rules:focus{
     color: black;
     text-decoration: none;
     cursor: pointer;
@@ -58,6 +67,7 @@ body {
     padding: 2px 16px;
     justify-content: right;
     align-items: center;
+    height: 55px;
 }
 
 .popup-header-rules{
@@ -326,7 +336,7 @@ input {
 .start-game-btn{
     width: 200px;
     height: 70px;
-    background: forestgreen;
+    background: #055a0c;
     border: none;
     border-radius: 5px;
     font-size: 27px;
@@ -415,16 +425,21 @@ input {
     width: 25%;
 }
 
-.exit{
+.exit, .exit-final{
     margin: 20px;
+    height: 70px;
+    width: 70px;
 }
 
 .rules{
     margin: 20px 10px;
+    height: 70px;
+    width: 70px;
 }
 
 .popup-rules {
     text-align: center;
+    margin-left: 15px;
 }
 
 .level-wrapper{
@@ -564,6 +579,7 @@ input {
     font-size: 22px;
     font-family: sans-serif;
     box-sizing: border-box;
+    padding: 100px;
 }
 
 .boss-result-info {
@@ -572,11 +588,11 @@ input {
     box-sizing: border-box;
 }
 
-.boss-name {
-    color: #7a1527;
+.final-rules-name {
     display: flex;
     font-size: 30px;
     justify-content: center;
+    font-weight: bold;
 }
 
 .strikes-repelled{
@@ -626,6 +642,23 @@ input {
     flex-wrap: wrap;
 }
 
+/*.win-wrapper {*/
+/*    background-image: url("img/fireworks_PNG15695.png");*/
+/*    width: 100vw;*/
+/*    height: 100vw;*/
+/*    -webkit-background-size: cover;*/
+/*    -moz-background-size: cover;*/
+/*    -o-background-size: cover;*/
+/*    background-size: cover;*/
+/*    object-fit: cover;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    position: relative;*/
+/*    text-align: center;*/
+/*    flex-wrap: wrap;*/
+/*    z-index: -1;*/
+/*}*/
+
 .game-over-win-wrapper {
     display: flex;
     flex-direction: column;
@@ -634,10 +667,10 @@ input {
     color: white;
     font-size: 28px;
     width: 553px;
-    height: 265px;
+    height: 298px;
     background: #44a64b;
     opacity: 0.9;
-    margin-top: -316px;
+    margin-top: -82px;
     text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
     0px 8px 13px rgba(0,0,0,0.1),
     0px 18px 23px rgba(0,0,0,0.1);
@@ -647,19 +680,17 @@ input {
 .win {
     color: white;
     font-size: 35px;
-    margin: 7px;
+    margin: 10px;
+}
+
+.game-over-win{
+    margin: 0;
 }
 
 .result-btn{
-    width: 150px;
-    height: 50px;
-    border: none;
-    border-radius: 10px;
-    color: white;
-    font-size: 24px;
-    background: #5c82b8;
     position: absolute;
-    top : 475px
+    top: 14px;
+    right: 49px;
 }
 
 .game-over-lost-wrapper {
@@ -669,7 +700,7 @@ input {
     height: 265px;
     background: #df1d1d;
     opacity: 0.9;
-    margin-top: -316px;
+    margin-top: -90px;
     text-shadow: 0 4px 3px rgba(0,0,0,0.4),
     0px 8px 13px rgba(0,0,0,0.1),
     0px 18px 23px rgba(0,0,0,0.1);
@@ -679,7 +710,14 @@ input {
 .lost {
     color: white;
     font-size: 35px;
-    margin: 7px;
+    margin: 13px;
+}
+
+.rules-exit-img-wrapper-result{
+   position: absolute;
+    top: 5px;
+    left: 20px;
+
 }
 
 
